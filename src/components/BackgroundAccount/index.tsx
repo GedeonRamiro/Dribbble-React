@@ -1,19 +1,18 @@
-import { Container, BackgroundAccountImage, ContentAccount, FormAccount } from './style'
-import accountbg from '../../assets/images/account-bg.jpg'
-import Button from '../Button'
-import Input from '../Input'
+import { Container, BackgroundAccountImage, ContentAccount, FormAccount, Text } from './style'
+import accountbg from '../../assets/images/account-bg2.jpg'
 
-const BackgroundAccount = () => {
+const BackgroundAccount: React.FC = ({ children }) => {
     return (
        <Container>
+           <Text>
+             <h2>Already a member? <span>Sign in</span></h2>
+           </Text>
            <BackgroundAccountImage>
                 <img src={accountbg} />
            </BackgroundAccountImage>
            <ContentAccount>
                <FormAccount>
-                 <h1>Sign up to Dribbble</h1>
-                  <Input />
-                  <Button  height='48px' width='185px'>Create Account</Button>  
+                {children}
                </FormAccount>
            </ContentAccount>
        </Container>
