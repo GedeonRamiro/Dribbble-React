@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import BackgroundAccount from '../../components/BackgroundAccount'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
-import { Text } from './style'
+import { Text, DivPassword } from './style'
 
 
 const Login = () => {
@@ -19,7 +19,10 @@ const Login = () => {
             <BackgroundAccount>
                 <h4>Email Address</h4>
                 <Input />
-                <h4>Password</h4>
+                  <DivPassword>
+                    <h4>Password</h4>
+                    <span>Forgot password?</span>
+                  </DivPassword>  
                 <Input />
                 <Button height='48px' width='185px'>Create Account</Button>
             </BackgroundAccount>

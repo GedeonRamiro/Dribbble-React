@@ -3,9 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div `
     display: flex;
     height: 100vh;
-
 `
-
 
 export const Text = styled.div`
    position: absolute;
@@ -15,7 +13,7 @@ export const Text = styled.div`
         line-height: 17px;
     }
     span{
-        color: #137ECB;
+        color: ${props => props.theme.color.BlueText};
         line-height: 17px;
         cursor: pointer;
     }

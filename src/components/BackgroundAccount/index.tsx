@@ -1,5 +1,5 @@
 import { Container, BackgroundAccountImage, ContentAccount, FormAccount } from './style'
-import accountbg from '../../assets/images/account-bg.jpg'
+import accountbg from '../../assets/images/account-bg2.jpg'
 import SocialAccount from '../SocialAccount'
 
 const BackgroundAccount: React.FC = ({ children }) => {

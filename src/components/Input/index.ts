@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
-const Input = styled.input`
+interface IProps{
+    width?: string
+}
+
+const Input = styled.input<IProps>`
     width: ${props => props.width || '432px'};
     height: 48px;
-    background: #E8E8E8;
+    background: ${props => props.theme.color.gray};
     border-radius: 5px;
     border: none;
     outline: none;

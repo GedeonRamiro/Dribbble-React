@@ -12,5 +12,14 @@ export const Text = styled.div`
         line-height: 17px;
         cursor: pointer;
     }
+`
 
+export const DivPassword = styled.div`
+    display: flex;
+    justify-content: space-between;
+    
+    span{
+        color: ${props => props.theme.color.blue};
+        cursor: pointer;
+    }
 `

@@ -3,6 +3,9 @@ import {
     Switch,
     Route,
   } from "react-router-dom";
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
   
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -14,6 +17,7 @@ import ThemeProvider from "./styles/ThemeProvider"
        return (
         <Router>
             <GlobalStyle />
+              <ToastContainer />
                 <ThemeProvider> 
                     <Switch>
                         <Route exact path='/'>
@@ -26,7 +30,7 @@ import ThemeProvider from "./styles/ThemeProvider"
                             <CreateAccount />
                         </Route>
                     </Switch>
-                </ThemeProvider>
+                </ThemeProvider>  
         </Router>
        
            

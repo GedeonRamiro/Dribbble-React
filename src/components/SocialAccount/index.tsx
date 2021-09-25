@@ -1,6 +1,6 @@
 
 import { FaGoogle, FaTwitter, FaFacebookSquare } from "react-icons/fa";
-import { ButtonGoogle, StartIcon, ButtonSocial, ButtonTwitter, DivLine, Line } from "./style";
+import { ButtonGoogle, StartIcon, ButtonSocial, ButtonTwitterFace, DivLine, Line } from "./style";
 
 
 const SocialAccount = () => {
@@ -14,12 +14,12 @@ const SocialAccount = () => {
                 </StartIcon>
                 <p>Sign up with google</p>
             </ButtonGoogle>
-            <ButtonTwitter>
+            <ButtonTwitterFace>
                     <FaTwitter size={20}/>
-            </ButtonTwitter>
-            <ButtonTwitter>
+            </ButtonTwitterFace>
+            <ButtonTwitterFace>
                     <FaFacebookSquare size={21}/>
-            </ButtonTwitter>
+            </ButtonTwitterFace>
           </ButtonSocial>
         </ButtonSocial>
         <DivLine>

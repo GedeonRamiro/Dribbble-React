@@ -5,7 +5,7 @@ export const DivBlock = styled.div`
     justify-content: space-between;
 `
 
-export const InputName = styled.div`
+export const DivInput = styled.div`
     display: flex;
     flex-direction: column;
 `
@@ -48,7 +48,7 @@ export const Terms = styled.div`
     }
 
     span{
-        color: #3F96D4;
+        color: ${props => props.theme.color.blue};
         cursor: pointer;
     }
 `

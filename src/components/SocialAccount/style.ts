@@ -10,12 +10,13 @@ export const ButtonGoogle = styled.button`
     align-items: center;
     width: 294px;
     height: 48px;
-    background: #3F96D4;
+    background: ${props => props.theme.color.blue};
     border-radius: 5px;
     border: none;
     font-weight: 700;
     line-height: 17px;
     font-size: 14px;
+    outline: none;
     cursor: pointer;
     p{
         color: #fff;
@@ -31,15 +32,16 @@ export const StartIcon = styled.div`
 
 `
 
-export const ButtonTwitter = styled.button`
+export const ButtonTwitterFace = styled.button`
     margin-left: 29px;
     width: 48px;
     height: 48px;
-    background: #E8E8E8;
+    background: ${props => props.theme.color.gray};
     border-radius: 5px;
     border: none;
-    color: #878888;
+    color: ${props => props.theme.color.grayIcon};
     cursor: pointer;
+    outline: none;
 `
 
 export const DivLine = styled.div`
