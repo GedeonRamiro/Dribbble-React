@@ -18,6 +18,7 @@ const Input = styled.input`
         border: solid 1px  #f5a3c5;
         box-shadow: 0 0 0 4px #fce8f0;
         transition: .2s;
+        
     }
 `
 
