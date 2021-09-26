@@ -12,7 +12,7 @@ import { useGlobalState } from '../../context/GlobalContext'
 
 
 const Login = () => {
-
+    
     const history = useHistory()
 
     const [email, setEmail] = useState('')
@@ -32,7 +32,6 @@ const Login = () => {
 
         try {
             setLoading(true)
-            
             const { data } = await api.post('/login', {
                 email, 
                 password,
@@ -52,11 +51,11 @@ const Login = () => {
     return (
         <>
             <Text>
-                <h2>Not a member? <span> 
-                        <Link style={{ textDecoration: 'none' }} to='/create-account'>
-                            Sign up now 
-                        </Link>
-                   </span></h2>
+                <h2>Not a member? 
+                    <Link style={{ textDecoration: 'none' }} to='/create-account'>
+                       <span>  Sign up now </span>
+                    </Link>
+                   </h2>
             </Text> 
             <BackgroundAccount>
                 <h4>Email Address</h4>

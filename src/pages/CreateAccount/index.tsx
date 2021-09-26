@@ -48,11 +48,11 @@ const CreateAccount = () => {
     return (
       <>  
            <Text>
-                <h2>Already a member? <span> 
+                <h2>Already a member? 
                         <Link style={{ textDecoration: 'none' }} to='/login'>
-                           Sign in
+                           <span> Sign in </span>
                         </Link>
-                   </span></h2>
+                   </h2>
             </Text>   
          <BackgroundAccount >
                   <DivBlock>

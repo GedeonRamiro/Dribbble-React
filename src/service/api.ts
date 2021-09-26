@@ -10,7 +10,7 @@ export const apiWithAuth = axios.create({
 })
 
 apiWithAuth.interceptors.request.use(function (config) {
-    const auth = localStorage.getItem("@dribbbles:auth")
+    const auth = localStorage.getItem("@dribbble:auth")
     
     if(auth){
         const parseAuth = JSON.parse(auth) as IAuth
@@ -27,7 +27,7 @@ apiWithAuth.interceptors.request.use(function (config) {
   }, function (error) {
 
     if(error?.response?.status === 401){
-        localStorage.removeItem("@dribbbles:auth")
+        localStorage.removeItem("@dribbble:auth")
         window.location.href = "/login"
     }
 
