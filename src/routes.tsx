@@ -12,28 +12,30 @@ import Login from "./pages/Login";
 import CreateAccount from "./pages/CreateAccount";
 import { GlobalStyle } from "./styles/GlobalStyle";
 import ThemeProvider from "./styles/ThemeProvider"
+import { GlobalStateProvider } from './context/GlobalContext'
+import ProtectedRouter from "./ProtectedRouter/ProtectedRouter";
 
   const Routes: React.FC = () => {
        return (
-        <Router>
-            <GlobalStyle />
-              <ToastContainer />
-                <ThemeProvider> 
-                    <Switch>
-                        <Route exact path='/'>
-                            <Home />
-                        </Route>
-                        <Route path='/login'>
-                            <Login />
-                        </Route>
-                        <Route  path='/create-account'>
-                            <CreateAccount />
-                        </Route>
-                    </Switch>
-                </ThemeProvider>  
-        </Router>
-       
-           
+        <GlobalStateProvider>
+            <Router>
+                <GlobalStyle />
+                <ToastContainer />
+                    <ThemeProvider> 
+                        <Switch>
+                            <ProtectedRouter exact path='/'>
+                                <Home />
+                            </ProtectedRouter>
+                            <Route path='/login'>
+                                <Login />
+                            </Route>
+                            <Route  path='/create-account'>
+                                <CreateAccount />
+                            </Route>
+                        </Switch>
+                    </ThemeProvider>  
+            </Router>
+        </GlobalStateProvider>         
        )
   }
 

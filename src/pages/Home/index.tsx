@@ -1,9 +1,17 @@
 
+import { useGlobalState } from "../../context/GlobalContext";
+import { apiWithAuth } from "../../service/api";
 
-function Home() {
+
+const Home = () => {
+
+  const { auth } = useGlobalState()
+
+  apiWithAuth.get('/profile')  
+
   return (
     <div>
-      <h1>Home</h1>
+      <h1>Usuário: {auth?.user.name}</h1>
     </div>
   );
 }

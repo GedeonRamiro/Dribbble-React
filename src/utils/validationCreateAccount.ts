@@ -1,6 +1,6 @@
-import validadeEmail from "./validadeEmail"
+import validationEmail from "./validationEmail"
 
-export default function validadeCreateAccount(
+export default function validationCreateAccount(
     name: string, 
     email: string, 
     password: string) {
@@ -9,7 +9,7 @@ export default function validadeCreateAccount(
         return 'Campos name, emial e password não pode ser vazio!'
     }
 
-    if(!validadeEmail(email)){
+    if(!validationEmail(email)){
         return 'E-mail inválido'
     }
     
