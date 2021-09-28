@@ -29,7 +29,6 @@ const CreateAccount = () => {
 
       if(typeof validation === 'string'){
          return toast.error(validation)
-        
       }
 
       try {

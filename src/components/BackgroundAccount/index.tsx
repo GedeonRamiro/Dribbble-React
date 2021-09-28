@@ -6,7 +6,7 @@ const BackgroundAccount: React.FC = ({ children }) => {
     return (
        <Container>
            <BackgroundAccountImage>
-                <img src={accountbg} />
+                <img src={accountbg} alt={accountbg} />
            </BackgroundAccountImage>
            <ContentAccount>
                <FormAccount>
