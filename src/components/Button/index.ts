@@ -22,7 +22,7 @@ import styled from "styled-components";
     opacity: ${props => props.disabled || props.isDisabled ? 0.5 : 1 };
     cursor: ${props => props.disabled || props.isDisabled ? 'default' : 'pointer' };
     pointer-events: ${props => props.disabled || props.isDisabled ? 'none' : 'all' };
-
+      
     
     img{
       position: absolute;
