@@ -1,7 +1,7 @@
 import { Link, useHistory } from 'react-router-dom'
 import {FiActivity} from 'react-icons/fi'
 import { MdWork, MdEmail } from 'react-icons/md'
-import {Container, IconInfo, InfoNavBar, LinkNavBar} from './style'
+import {Container, IconInfo, InfoNavBar, LinkNavBar, ImageProfile} from './style'
 import logo from '../../assets/images/logo.png'
 import Input from '../Input'
 import Button from '../Button'
@@ -9,8 +9,7 @@ import Button from '../Button'
 import { useGlobalState } from "../../context/GlobalContext";
 
 
-
-const NavBar = () => {
+const NavBar: React.FC = ({ children }) => {
 
     const history = useHistory()
 
@@ -50,6 +49,9 @@ const NavBar = () => {
                    <i> <MdWork/></i>
                    <i><FiActivity/></i>
                </IconInfo>
+               <ImageProfile>
+                   {children}
+               </ImageProfile>
                <Button onClick={logout}>Logout</Button>
            </InfoNavBar>
        </Container>

@@ -32,3 +32,13 @@ export const IconInfo = styled.div`
         cursor: pointer;
     }
 `
+
+export const ImageProfile = styled.div`
+    margin-right: 20px;
+    img{
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+    }
+   
+`
