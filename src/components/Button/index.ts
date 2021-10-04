@@ -5,6 +5,7 @@ import styled from "styled-components";
     height?: string;
     disabled?: boolean
     isDisabled?: boolean;
+    isLoading?: boolean;
  }
 
 
@@ -17,11 +18,20 @@ import styled from "styled-components";
     border: none;
     color: #fff;
     font-weight: 700;
-    font-size: 14px;
+    font-size: ${props => props.isLoading ? '0' : '14px'};
     opacity: ${props => props.disabled || props.isDisabled ? 0.5 : 1 };
     cursor: ${props => props.disabled || props.isDisabled ? 'default' : 'pointer' };
     pointer-events: ${props => props.disabled || props.isDisabled ? 'none' : 'all' };
 
+    
+    img{
+      position: absolute;
+      width: 30px;
+      margin-left: -15px;
+      margin-top: -14px;
+      background: none;
+      visibility: ${props => props.isLoading ? 'visible' : 'hidden' };
+    }
 `
 
 export default Button

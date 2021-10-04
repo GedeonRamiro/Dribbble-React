@@ -9,6 +9,7 @@ import api from '../../service/api'
 import  validationAccount  from '../../utils/validationAccount';
 import { Text, DivPassword } from './style'
 import { useGlobalState } from '../../context/GlobalContext'
+import loadingg from '../../assets/images/loading.svg'
 
 
 const Login = () => {
@@ -21,6 +22,7 @@ const Login = () => {
     const { setAuth } = useGlobalState()
 
     const isDisabled = email === '' || password === '' || loading
+    const isLoading = loading
 
     const loginAccount = async () => {
 
@@ -71,7 +73,14 @@ const Login = () => {
                     value={password} 
                     onChange={event => setPassword(event.target.value)}
                 />
-                <Button height='48px' width='185px' onClick={loginAccount} isDisabled={isDisabled}>Create Account</Button>
+                <Button 
+                    height='48px' 
+                    width='185px' 
+                    onClick={loginAccount} 
+                    isDisabled={isDisabled} isLoading={isLoading}> 
+                        <img src={loadingg} /> 
+                    Create Account
+                </Button>
             </BackgroundAccount>
         </> 
     )

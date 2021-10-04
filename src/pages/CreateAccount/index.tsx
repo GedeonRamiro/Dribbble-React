@@ -8,6 +8,7 @@ import Button from '../../components/Button'
 import Input from '../../components/Input'
 import validationCreateAccount from '../../utils/validationCreateAccount'
 import { DivBlock, DivInput, Text, Terms } from './style'
+import loadingg from '../../assets/images/loading.svg'
 
 
 const CreateAccount = () => {
@@ -20,6 +21,7 @@ const CreateAccount = () => {
     const [loading, setLoading] = useState(false)
 
     const isDisabled = name === '' || email === '' || password === '' || loading
+    const isLoading = loading
     
     const history = useHistory()
 
@@ -87,7 +89,16 @@ const CreateAccount = () => {
                       <p>Creating an account means you’re okey with <span> Terms of<br />
                       Service, Privacy Policy</span> and our defult <span>Notification Settings.</span></p>
                   </Terms>
-                  <Button height='48px' width='185px' onClick={createAccount} disabled={!checkbox} isDisabled={isDisabled} >Create Account</Button>
+                  <Button 
+                      height='48px' 
+                      width='185px' 
+                      onClick={createAccount} 
+                      disabled={!checkbox} 
+                      isDisabled={isDisabled} 
+                      isLoading={isLoading}>
+                         <img src={loadingg} /> 
+                        Create Account
+                  </Button>
                   <Terms>
                       <h2>This site is protected by reCAPTCHA and the google <span><br /> 
                       TPrivacy Policy </span> aand the <span>Terms of Service apply</span></h2>
