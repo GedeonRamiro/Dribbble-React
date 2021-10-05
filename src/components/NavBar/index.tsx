@@ -9,7 +9,7 @@ import Button from '../Button'
 import { useGlobalState } from "../../context/GlobalContext";
 
 
-const NavBar = () => {
+const NavBar:React.FC = ({ children }) => {
 
     const history = useHistory()
 
@@ -21,40 +21,43 @@ const NavBar = () => {
     }
 
     return (
-       <Container>
-           <LinkNavBar>
-                <Link to='/'>
-                    <img src={logo} alt="logo" />
-                </Link>
-                <Link to='/'>
-                    Inspiration
-                </Link>
-                <Link to='/'>
-                    Find Work
-                </Link>
-                <Link to='/'>
-                    Learn Design
-                </Link>
-                <Link to='/'>
-                    Go Pro
-                </Link>
-                <Link to='/'>
-                    Hire Designers
-                </Link>
-           </LinkNavBar>
-           <InfoNavBar>
-               <Input placeholder='Search' width='113px'  />
-               <IconInfo>
-                   <i><MdEmail/></i>
-                   <i> <MdWork/></i>
-                   <i><FiActivity/></i>
-               </IconInfo>
-               <ImageProfile>
-                    <img src={`http://lorempixel.com/400/400/cats/${auth?.user.name}/`} />
-               </ImageProfile>
-               <Button onClick={logout}>Logout</Button>
-           </InfoNavBar>
-       </Container>
+        <>
+            <Container>
+                <LinkNavBar>
+                        <Link to='/'>
+                            <img src={logo} alt="logo" />
+                        </Link>
+                        <Link to='/'>
+                            Inspiration
+                        </Link>
+                        <Link to='/'>
+                            Find Work
+                        </Link>
+                        <Link to='/'>
+                            Learn Design
+                        </Link>
+                        <Link to='/'>
+                            Go Pro
+                        </Link>
+                        <Link to='/'>
+                            Hire Designers
+                        </Link>
+                </LinkNavBar>
+                <InfoNavBar>
+                    <Input placeholder='Search' width='113px'  />
+                    <IconInfo>
+                        <i><MdEmail/></i>
+                        <i> <MdWork/></i>
+                        <i><FiActivity/></i>
+                    </IconInfo>
+                    <ImageProfile>
+                            <img src={`http://lorempixel.com/400/400/cats/${auth?.user.name}/`} />
+                    </ImageProfile>
+                    <Button onClick={logout}>Logout</Button>
+                </InfoNavBar>
+            </Container>
+            {children}
+           </>
     )
 }
 

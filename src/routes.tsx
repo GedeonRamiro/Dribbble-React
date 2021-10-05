@@ -26,20 +26,21 @@ import NavBar from "./components/NavBar";
                 <GlobalStyle />
                 <ToastContainer />
                     <ThemeProvider>
-                    <NavBar />  
                         <Switch>
-                            <ProtectedRouter exact path='/'>
-                                <Home />
-                            </ProtectedRouter>
-                            <ProtectedRouter path='/post'>
-                                <Post />
-                            </ProtectedRouter>
                             <Route path='/login'>
                                 <Login />
                             </Route>
                             <Route  path='/create-account'>
                                 <CreateAccount />
                             </Route>
+                            <NavBar>  
+                            <ProtectedRouter exact path='/'>
+                                <Home />
+                            </ProtectedRouter>
+                            <ProtectedRouter path='/post'>
+                                <Post />
+                            </ProtectedRouter>
+                            </NavBar >  
                         </Switch>
                     </ThemeProvider>  
             </Router>
