@@ -14,6 +14,10 @@ import { GlobalStyle } from "./styles/GlobalStyle";
 import ThemeProvider from "./styles/ThemeProvider"
 import { GlobalStateProvider } from './context/GlobalContext'
 import ProtectedRouter from "./ProtectedRouter/ProtectedRouter";
+import Post from "./pages/Post";
+import NavBar from "./components/NavBar";
+
+
 
   const Routes: React.FC = () => {
        return (
@@ -21,10 +25,14 @@ import ProtectedRouter from "./ProtectedRouter/ProtectedRouter";
             <Router>
                 <GlobalStyle />
                 <ToastContainer />
-                    <ThemeProvider> 
+                    <ThemeProvider>
+                    <NavBar />  
                         <Switch>
                             <ProtectedRouter exact path='/'>
                                 <Home />
+                            </ProtectedRouter>
+                            <ProtectedRouter path='/post'>
+                                <Post />
                             </ProtectedRouter>
                             <Route path='/login'>
                                 <Login />

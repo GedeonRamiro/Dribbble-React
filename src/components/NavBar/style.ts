@@ -14,7 +14,7 @@ export const LinkNavBar = styled.div`
         font-size: 14px;
         font-weight: 500;
         line-height: 17px;
-        margin-left: 20px;
+        margin-right: 20px;
     }
 `
 

@@ -6,17 +6,6 @@ import { useEffect, useState } from "react";
 import { Main } from './style'
 import Card from '../../components/Card'
 
-interface IUserPost{
-  user: {
-    id: string,
-    title: string
-    description: string
-    image_url: string
-    image_id: string
-    created_at: string
-    updated_at: string
-  }
-} 
 
 interface IPosts{
   id: string,
@@ -24,16 +13,24 @@ interface IPosts{
   description: string
   image_url: string
   image_id: string
-  user:IUserPost,
+  user: {
+    id: string,
+    name: string
+    bio: string
+    email: string
+    created_at: string
+    updated_at: string
+  }
   created_at: string
   updated_at: string
+  
 }
 
 
 const Home = () => {
 
   const { auth } = useGlobalState()
-  //console.log(auth)
+  console.log(auth?.user.name)
 
   const [posts, setPosts] = useState<IPosts[]>([])
   console.log(posts)
@@ -49,21 +46,18 @@ const Home = () => {
 
 
   return (
-    <>
-    <NavBar>
-        <img src={`http://lorempixel.com/400/400/cats/${auth?.user.name}/`} />
-    </NavBar>
 
     <Main>
       { posts.map( post => (
         <Card
           key={post.id}
+          id={post.id}
+          image_url={post.image_url}
           title={post.title}
-          description={post.description}
+          username ={post.user.name}
         />
       ))}
     </Main>
-    </>
 
   );
 }

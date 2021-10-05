@@ -9,11 +9,11 @@ import Button from '../Button'
 import { useGlobalState } from "../../context/GlobalContext";
 
 
-const NavBar: React.FC = ({ children }) => {
+const NavBar = () => {
 
     const history = useHistory()
 
-    const { removeAuth } = useGlobalState()
+    const { auth, removeAuth } = useGlobalState()
 
     const logout = () => {
         removeAuth();
@@ -50,7 +50,7 @@ const NavBar: React.FC = ({ children }) => {
                    <i><FiActivity/></i>
                </IconInfo>
                <ImageProfile>
-                   {children}
+                    <img src={`http://lorempixel.com/400/400/cats/${auth?.user.name}/`} />
                </ImageProfile>
                <Button onClick={logout}>Logout</Button>
            </InfoNavBar>
