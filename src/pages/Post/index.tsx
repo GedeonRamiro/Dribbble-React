@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { apiWithAuth } from "../../service/api"
 import  InfoPost from "../../components/InfoPost"
+import loadingg from '../../assets/images/loadingPage.svg'
+import { Loading } from '../../components/Loading'
 
 
 interface Istate {
@@ -23,14 +25,13 @@ const Post = () => {
     const {state} = useLocation<Istate>()
     const idState = state.id
     const userId = state.user_id
-    console.log(idState)
+
     
     const [infoPost, setInfoPost] = useState<IPost>()
 
 
     const getPost = async () => {
         const { data } = await apiWithAuth.get<IPost>(`/posts/${idState}`)
-        console.log()
         setInfoPost(data)
     }
 
@@ -42,13 +43,22 @@ const Post = () => {
     
     
     return (
-        <InfoPost 
-            title={infoPost?.title}
-            description={infoPost?.description}
-            image={infoPost?.image_url}
-            user={infoPost?.user?.name}
-            userId={userId}
-        />
+        <>
+        {infoPost ? (
+            <InfoPost 
+                title={infoPost?.title}
+                description={infoPost?.description}
+                image={infoPost?.image_url}
+                user={infoPost?.user?.name}
+                userId={userId}
+            />
+
+        ) : (
+            <Loading>
+                <img src={loadingg} />
+            </Loading>
+        )}
+        </>
     )
 }
 

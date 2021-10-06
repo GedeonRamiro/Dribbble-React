@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import CardProfile from "../../components/CardProfile"
 import { apiWithAuth } from "../../service/api"
+import loadingg from '../../assets/images/loadingPage.svg'
+import { Loading } from '../../components/Loading'
 
 interface IProfile{
   id: string
@@ -12,6 +14,7 @@ interface IProfile{
     {
       id: string
       image_url: string,
+      title: string
 
     }
   ],
@@ -27,7 +30,6 @@ const Profile = () => {
 
     const { state } = useLocation<Istate>()
     const userId = state.userId
-    console.log("ID post: ", userId)
 
     const [profile, setProfile] = useState<IProfile>()
 
@@ -43,6 +45,8 @@ const Profile = () => {
 
 
     return (
+      <>
+      {profile ? (
         <CardProfile
           name={profile?.name}
           bio={profile?.bio}  
@@ -50,6 +54,13 @@ const Profile = () => {
           userId={userId}
         
         />
+
+      ) : (
+        <Loading>
+            <img src={loadingg} />
+        </Loading>
+      )}
+      </>
     )
 }
 
