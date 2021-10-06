@@ -1,7 +1,6 @@
 
-import { useGlobalState } from "../../context/GlobalContext";
+import loadingg from '../../assets/images/loading.svg'
 import { apiWithAuth } from "../../service/api";
-import NavBar from '../../components/NavBar'
 import { useEffect, useState } from "react";
 import { Main } from './style'
 import Card from '../../components/Card'
@@ -10,19 +9,11 @@ import Card from '../../components/Card'
 interface IPosts{
   id: string,
   title:string,
-  description: string
   image_url: string
-  image_id: string
   user: {
     id: string,
     name: string
-    bio: string
-    email: string
-    created_at: string
-    updated_at: string
   }
-  created_at: string
-  updated_at: string
   
 }
 
@@ -42,7 +33,7 @@ const Home = () => {
 
 
   return (
-
+  
     <Main>
       { posts.map( post => (
         <Card
