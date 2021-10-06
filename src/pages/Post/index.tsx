@@ -23,13 +23,14 @@ const Post = () => {
     const {state} = useLocation<Istate>()
     const idState = state.id
     const userId = state.user_id
-
+    console.log(idState)
     
     const [infoPost, setInfoPost] = useState<IPost>()
-    console.log(infoPost?.user?.name)
+
 
     const getPost = async () => {
         const { data } = await apiWithAuth.get<IPost>(`/posts/${idState}`)
+        console.log()
         setInfoPost(data)
     }
 
