@@ -8,16 +8,16 @@ interface IProps {
     username: string
     title: string
     image_url: string
+    user_id: string
 }
 
-const Card: React.FC<IProps> = ( {id, username, title, image_url} ) => {
-
+const Card: React.FC<IProps> = ( {id, user_id, username, title, image_url} ) => {
 
     return (
         <Container>
             <Link to={{
                     pathname: '/post', 
-                    state: {id}
+                    state: {id, user_id}
                 }}>
                 <ImgPost src={image_url} />
             </Link>

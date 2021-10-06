@@ -6,6 +6,7 @@ import  InfoPost from "../../components/InfoPost"
 
 interface Istate {
     id: string
+    user_id: string;
  }
 
  interface IPost {
@@ -21,6 +22,8 @@ const Post = () => {
 
     const {state} = useLocation<Istate>()
     const idState = state.id
+    const userId = state.user_id
+
     
     const [infoPost, setInfoPost] = useState<IPost>()
     console.log(infoPost?.user?.name)
@@ -38,14 +41,13 @@ const Post = () => {
     
     
     return (
-        <>
-            <InfoPost 
-                title={infoPost?.title}
-                description={infoPost?.description}
-                image={infoPost?.image_url}
-                user={infoPost?.user?.name}
-            />
-        </>
+        <InfoPost 
+            title={infoPost?.title}
+            description={infoPost?.description}
+            image={infoPost?.image_url}
+            user={infoPost?.user?.name}
+            userId={userId}
+        />
     )
 }
 

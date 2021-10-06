@@ -29,11 +29,7 @@ interface IPosts{
 
 const Home = () => {
 
-  const { auth } = useGlobalState()
-  console.log(auth?.user.name)
-
   const [posts, setPosts] = useState<IPosts[]>([])
-  console.log(posts)
 
   const getPosts = async () => {
     const { data } = await apiWithAuth.get<IPosts[]>('/posts')
@@ -55,6 +51,7 @@ const Home = () => {
           image_url={post.image_url}
           title={post.title}
           username ={post.user.name}
+          user_id={post.user.id}
         />
       ))}
     </Main>

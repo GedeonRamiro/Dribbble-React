@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Container, TextDescription, TextName, Photo, PhotoProfile, InfoUser } from "./style"
 
  interface IPost {
@@ -5,18 +6,24 @@ import { Container, TextDescription, TextName, Photo, PhotoProfile, InfoUser } f
     description?: string;
     image?: string;
     user?: string;
+    userId: string
     
  }
 
-const InfoPost: React.FC<IPost> = ({ title, description, image, user }) => {
+const InfoPost: React.FC<IPost> = ({ userId, title, description, image, user }) => {
 
-    console.log(title)
     return (
         <Container>
             <InfoUser>
-                <PhotoProfile>
-                    <img src={`http://lorempixel.com/400/400/cats/${user}/`} />
-                </PhotoProfile>
+                <Link to={{
+                    pathname: '/profile',
+                    state: {userId}
+
+                }}>
+                    <PhotoProfile>
+                        <img src={`http://lorempixel.com/400/400/cats/${user}/`} />
+                    </PhotoProfile>
+                </Link>
                 <TextName>
                     <h1>{title}</h1>
                     <h2>{user}</h2>
