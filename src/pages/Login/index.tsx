@@ -38,7 +38,6 @@ const Login = () => {
                 email, 
                 password,
             })
-            console.log(data)
             setAuth(data)
             history.push("/")
         } catch (error) {

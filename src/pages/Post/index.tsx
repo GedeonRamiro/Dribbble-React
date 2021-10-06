@@ -29,7 +29,6 @@ const Post = () => {
     
     const [infoPost, setInfoPost] = useState<IPost>()
 
-
     const getPost = async () => {
         const { data } = await apiWithAuth.get<IPost>(`/posts/${idState}`)
         setInfoPost(data)
@@ -39,7 +38,8 @@ const Post = () => {
 
     useEffect(() => {
         getPost()
-    }, )
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[] )
 
     
     

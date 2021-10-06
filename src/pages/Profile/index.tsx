@@ -34,13 +34,14 @@ const Profile = () => {
     const [profile, setProfile] = useState<IProfile>()
 
     const getPrtofile = async () => {
-        const { data } = await apiWithAuth.get(`/users/${userId}`)
+        const { data } = await apiWithAuth.get<IProfile>(`/users/${userId}`)
         setProfile(data)
     }
 
     useEffect(() => {
         getPrtofile()
-    }, )
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     
 
 
