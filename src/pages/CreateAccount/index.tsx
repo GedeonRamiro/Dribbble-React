@@ -96,7 +96,7 @@ const CreateAccount = () => {
                       disabled={!checkbox} 
                       isDisabled={isDisabled} 
                       isLoading={isLoading}>
-                         <img src={loadingg} /> 
+                         <img src={loadingg} alt='loading' /> 
                         Create Account
                   </Button>
                   <Terms>

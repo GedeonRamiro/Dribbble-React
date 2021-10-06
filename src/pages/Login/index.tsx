@@ -79,7 +79,7 @@ const Login = () => {
                     width='185px' 
                     onClick={loginAccount} 
                     isDisabled={isDisabled} isLoading={isLoading}> 
-                        <img src={loadingg} /> 
+                        <img src={loadingg} alt='loading' /> 
                         Sign In
                 </Button>
             </BackgroundAccount>

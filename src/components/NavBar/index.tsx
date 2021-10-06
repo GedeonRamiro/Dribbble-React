@@ -3,7 +3,6 @@ import {FiActivity} from 'react-icons/fi'
 import { MdWork, MdEmail } from 'react-icons/md'
 import {Container, IconInfo, InfoNavBar, LinkNavBar, ImageProfile} from './style'
 import logo from '../../assets/images/logo.png'
-import Input from '../Input'
 import Button from '../Button'
 
 import { useGlobalState } from "../../context/GlobalContext";
@@ -50,7 +49,7 @@ const NavBar:React.FC = ({ children }) => {
                         <i><FiActivity/></i>
                     </IconInfo>
                     <ImageProfile>
-                            <img src={`http://lorempixel.com/400/400/cats/${auth?.user.name}/`} />
+                            <img src={`http://lorempixel.com/400/400/cats/${auth?.user.name}/`} alt={auth?.user.name} />
                     </ImageProfile>
                     <Button onClick={logout}>Logout</Button>
                 </InfoNavBar>

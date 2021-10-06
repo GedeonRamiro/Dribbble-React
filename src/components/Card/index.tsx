@@ -22,7 +22,7 @@ const Card: React.FC<IProps> = ( {id, user_id, username, title, image_url} ) => 
                 <ImgPost src={image_url} />
             </Link>
             <InfoPost>
-                <img src={`http://lorempixel.com/400/400/cats/${username}/`} />
+                <img src={`http://lorempixel.com/400/400/cats/${username}/`} alt={username} />
                 <h1>{title}</h1>
             </InfoPost> 
         </Container>

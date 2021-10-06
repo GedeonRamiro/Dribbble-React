@@ -9,6 +9,7 @@ interface IProps {
       {
         image_url: string,
         id: string,
+        title: string,
       }
     ]
 }
@@ -18,12 +19,12 @@ const CardProfile: React.FC<IProps> = ({userId, name, bio, posts}) => {
        <Container>
            <InfoProfile>
             <InfoUser>
-                <img src={`http://lorempixel.com/400/400/cats/${name}/`} />
+                <img src={`http://lorempixel.com/400/400/cats/${name}/`} alt={name}  />
                 <h2>{name}</h2>
                 <h1>{bio}</h1>
             </InfoUser>
             <PhotoProfile>
-                <img src={`http://lorempixel.com/400/400/cats/${name}/`} />
+                <img src={`http://lorempixel.com/400/400/cats/${name}/`} alt={name} />
             </PhotoProfile>
            </InfoProfile>
            <Posts>
@@ -32,8 +33,8 @@ const CardProfile: React.FC<IProps> = ({userId, name, bio, posts}) => {
                     pathname: '/post',
                     state: {id: post.id, user_id: userId}
                    
-                }}>
-                    <img src={post.image_url} />
+                }} key={userId}>
+                    <img src={post.image_url} alt={post.title} />
                 </Link>
 
              

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { Container, TextDescription, TextName, Photo, PhotoProfile, InfoUser } from "./style"
 
+
  interface IPost {
     title?: string
     description?: string;
@@ -21,7 +22,7 @@ const InfoPost: React.FC<IPost> = ({ userId, title, description, image, user }) 
 
                 }}>
                     <PhotoProfile>
-                        <img src={`http://lorempixel.com/400/400/cats/${user}/`} />
+                        <img src={`http://lorempixel.com/400/400/cats/${user}/`} alt={user} />
                     </PhotoProfile>
                 </Link>
                 <TextName>
