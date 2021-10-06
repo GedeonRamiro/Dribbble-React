@@ -5,8 +5,8 @@ import { useGlobalState } from "../context/GlobalContext"
 
 
 const ProtectedRouter: React.FC<RouteProps> = ({ children, ...rest }) => {
-
     const { auth } = useGlobalState()
+    
 
    useEffect(() => {
        if(!auth) toast.warning('Faça o login!')

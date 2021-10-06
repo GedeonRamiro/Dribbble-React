@@ -34,17 +34,21 @@ import NavBar from "./components/NavBar";
                             <Route  path='/create-account'>
                                 <CreateAccount />
                             </Route>
-                            <NavBar>  
-                                <ProtectedRouter exact path='/'>
-                                    <Home />
+                            <NavBar>    
+                                <ProtectedRouter >
+                                    <ProtectedRouter exact path='/'>
+                                        <Home />
+                                    </ProtectedRouter>
+                            
+                                    <ProtectedRouter path='/post'>
+                                        <Post />
+                                    </ProtectedRouter>
+                            
+                                    <ProtectedRouter path='/profile'>
+                                        <Profile />
+                                    </ProtectedRouter>
                                 </ProtectedRouter>
-                                <ProtectedRouter path='/post'>
-                                    <Post />
-                                </ProtectedRouter>
-                                <ProtectedRouter path='/profile'>
-                                    <Profile />
-                                </ProtectedRouter>
-                            </NavBar >  
+                            </NavBar>
                         </Switch>
                     </ThemeProvider>  
             </Router>
