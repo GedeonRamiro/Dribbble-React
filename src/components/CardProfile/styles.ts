@@ -57,8 +57,8 @@ export const Posts = styled.div`
         width: 370px;
         height: 374px;
         object-fit: cover;
-        border-radius: 4px;
         padding: 30px;
+        border-radius: 35px;
     }
 
 `

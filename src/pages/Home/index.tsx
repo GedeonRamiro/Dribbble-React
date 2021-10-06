@@ -1,5 +1,5 @@
 
-import loadingg from '../../assets/images/loading.svg'
+
 import { apiWithAuth } from "../../service/api";
 import { useEffect, useState } from "react";
 import { Main } from './style'

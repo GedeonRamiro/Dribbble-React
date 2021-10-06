@@ -40,7 +40,7 @@ const Profile = () => {
 
     useEffect(() => {
         getPrtofile()
-    }, [])
+    }, )
     
 
 
@@ -57,7 +57,7 @@ const Profile = () => {
 
       ) : (
         <Loading>
-            <img src={loadingg} />
+            <img src={loadingg} alt="loading" />
         </Loading>
       )}
       </>

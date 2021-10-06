@@ -20,7 +20,7 @@ export const Photo = styled.div`
     img{
         width: 828px;
         height: 566px;
-        border-radius: none;
+        border-radius: 8px;
     }
 `
 

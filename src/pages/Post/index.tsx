@@ -36,9 +36,10 @@ const Post = () => {
     }
 
 
+
     useEffect(() => {
-            getPost()
-    }, [])
+        getPost()
+    }, )
 
     
     
@@ -55,7 +56,7 @@ const Post = () => {
 
         ) : (
             <Loading>
-                <img src={loadingg} />
+                <img src={loadingg} alt="loading" />
             </Loading>
         )}
         </>

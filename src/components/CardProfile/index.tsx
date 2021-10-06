@@ -15,6 +15,9 @@ interface IProps {
 }
 
 const CardProfile: React.FC<IProps> = ({userId, name, bio, posts}) => {
+
+
+
     return(
        <Container>
            <InfoProfile>
@@ -33,7 +36,7 @@ const CardProfile: React.FC<IProps> = ({userId, name, bio, posts}) => {
                     pathname: '/post',
                     state: {id: post.id, user_id: userId}
                    
-                }} key={userId}>
+                }} key={post.id}>
                     <img src={post.image_url} alt={post.title} />
                 </Link>
 
