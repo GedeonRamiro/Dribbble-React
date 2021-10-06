@@ -15,6 +15,7 @@ import ThemeProvider from "./styles/ThemeProvider"
 import { GlobalStateProvider } from './context/GlobalContext'
 import ProtectedRouter from "./ProtectedRouter/ProtectedRouter";
 import Post from "./pages/Post";
+import Profile from "./pages/Profile";
 import NavBar from "./components/NavBar";
 
 
@@ -39,6 +40,9 @@ import NavBar from "./components/NavBar";
                             </ProtectedRouter>
                             <ProtectedRouter path='/post'>
                                 <Post />
+                            </ProtectedRouter>
+                            <ProtectedRouter path='/profile'>
+                                <Profile />
                             </ProtectedRouter>
                             </NavBar >  
                         </Switch>
