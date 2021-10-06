@@ -44,7 +44,6 @@ const NavBar:React.FC = ({ children }) => {
                         </Link>
                 </LinkNavBar>
                 <InfoNavBar>
-                    <Input placeholder='Search' width='113px'  />
                     <IconInfo>
                         <i><MdEmail/></i>
                         <i> <MdWork/></i>
