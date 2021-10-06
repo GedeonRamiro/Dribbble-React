@@ -36,17 +36,17 @@ import NavBar from "./components/NavBar";
                             </Route>
                             <NavBar>    
                                 <ProtectedRouter >
-                                    <ProtectedRouter exact path='/'>
+                                    <Route exact path='/'>
                                         <Home />
-                                    </ProtectedRouter>
+                                    </Route>
                             
-                                    <ProtectedRouter path='/post'>
+                                    <Route path='/post'>
                                         <Post />
-                                    </ProtectedRouter>
+                                    </Route>
                             
-                                    <ProtectedRouter path='/profile'>
+                                    <Route path='/profile'>
                                         <Profile />
-                                    </ProtectedRouter>
+                                    </Route>
                                 </ProtectedRouter>
                             </NavBar>
                         </Switch>
