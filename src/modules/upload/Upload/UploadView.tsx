@@ -27,10 +27,10 @@ const UploadView: React.FC<IProps> = ( {
 } ) => {
 
 
-
     return(
         <div className='flex justify-center '>
             <div className='w-full my-20 lg:mx-72'>
+                <h4 className='text-2xl font-semibold text-center lg:text-4xl'>Criar Post</h4>
                 <div className="flex items-center justify-center my-4 bg-grey-lighter">
                     <label className="flex flex-col items-center w-full px-4 py-6 tracking-widest text-pink-500 uppercase bg-gray-100 border rounded-lg cursor-pointer hover:bg-pink-500 hover:text-white">
                         <FaUpload size={24} />

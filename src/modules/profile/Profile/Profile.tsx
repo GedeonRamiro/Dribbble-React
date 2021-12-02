@@ -45,6 +45,7 @@ const Profile = () => {
     const [profile, setProfile] = useState<IProfile>({} as IProfile)
     const [myProfile, setMyProfile] = useState<IProfile>({} as IProfile)
 
+
     useEffect(() => {
         const getProfile = async () => {
             
@@ -78,18 +79,17 @@ const Profile = () => {
     myProfile()
     
 
-
      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [idParams])
 
-    if(profile.id !== undefined && profile.id !== undefined && profile.id === myProfile.id){
+    if( profile.id === myProfile.id){
         profile.posts = myProfile.posts 
     } 
   
 
     return (
         <>
-            <ProfileView profile={profile} />
+            <ProfileView profile={profile} {...{isMyProfile}} />
         </>
     )
 }
