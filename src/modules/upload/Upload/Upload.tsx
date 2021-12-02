@@ -22,10 +22,6 @@ const Upload = () => {
     const up = (e: any) => {
         setFile(e.target.files[0])
     }
-
-    
-    
-    console.log({file, title, description})
     
     
     const createPost = async () => {

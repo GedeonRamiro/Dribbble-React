@@ -44,7 +44,7 @@ const UploadView: React.FC<IProps> = ( {
                     </label>
                 </div>
                 
-                {file && <img className='w-full mb-10' src={URL.createObjectURL(file)} alt='image' /> }
+                {file && <img className='w-full mb-10' src={URL.createObjectURL(file)} alt={file} /> }
                
                 <h4 className='mb-1 text-sm font-semibold'>Título</h4>  
                 <Input 
