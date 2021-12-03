@@ -13,6 +13,7 @@ const CreateAccountRoutes = lazy(() =>  import('./modules/account/create-account
 const HomeRoutes = lazy(() =>  import('./modules/home/home.routes'))
 const PostRoutes = lazy(() =>  import('./modules/post/post.routes'))
 const ProfileRoutes = lazy(() =>  import('./modules/profile/profile.routes'))
+const EditProfileRoutes = lazy(() =>  import('./modules/profile/editprofile.routes'))
 const UploadRoutes = lazy(() =>  import('./modules/upload/upload.routes'))
 
 
@@ -30,6 +31,7 @@ const MainRoutes = () => {
                             <Route path="/post/:id" component={LazyLoading(PostRoutes)} />
                             <Route path="/profile" component={LazyLoading(ProfileRoutes)} />
                             <Route path="/profile/:id" component={LazyLoading(ProfileRoutes)} />
+                            <Route path="/editprofile" component={LazyLoading(EditProfileRoutes)} />
                             <Route path="/upload" component={LazyLoading(UploadRoutes)} />
                             <Redirect to='/' />
                             </Switch> 

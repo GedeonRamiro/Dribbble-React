@@ -25,7 +25,7 @@ const ProfileView: React.FC<IProps> = ( { profile, isMyProfile } ) => {
                             <img className='w-20 bg-pink-100 rounded-full' src={`https://robohash.org/${profile.name}/`} alt={profile.name} />
                             <h6 className='my-4 text-xl font-semibold md:text-4xl '>{profile.name}</h6>
                             <h3 className='text-3xl font-bold md:text-5xl'>{profile.bio}</h3>
-                            <Link to={{ pathname:'/upload', state: profile }} >
+                            <Link to={{ pathname:'/editprofile', state: profile }} >
                                 {isMyProfile && (
                                     <button className='px-3 py-2 mt-6 text-xs font-semibold duration-300 bg-gray-100 border rounded-md outline-none md:mt-10 md:text-sm md:px-4 md:py-2 hover:shadow'>Editar Perfil</button>
                                 )}

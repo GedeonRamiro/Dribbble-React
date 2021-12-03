@@ -1,6 +1,6 @@
 import UploadView from './UploadView'
 import { useState } from "react"
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import toast from 'react-hot-toast';
 import { apiWithAuth } from '_common/services/api'
 
