@@ -21,9 +21,11 @@ const EditProfile = () => {
 
     const [profile, setProfile] = useState<IProfile>({} as IProfile)
     const [name, setName] = useState('')
-    const [bio, setBio] = useState('')
-    
-  
+
+    console.log(name)
+
+
+     
     const getProfile = async () => {
         
         try {
@@ -38,12 +40,26 @@ const EditProfile = () => {
         }
         
     }
+
+    const getEditProfile = async () => {
+        
+        try {
+            await apiWithAuth.put('/profile', {name})
+            toast.success('Perfil atualizado com sucesso!')
+            history.push('/profile')
+        } catch (error: any) {
+            console.log({error})
+            toast.error('Campo nome nçao pode ser vazio!')
+            //toast.error(error?.response?.data?.message)
+        }
+    }
     
     useEffect(() => {
             if(!profileState){
                 getProfile()
             }
             setProfile(profileState)
+            setName(profile.name)
 
          // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [])
@@ -51,7 +67,7 @@ const EditProfile = () => {
             
 
     return (
-        <EditProfileView profile={profile}  {...{name, setName, bio, setBio}}  />
+        <EditProfileView profile={profile}  {...{name, setName, getEditProfile}}  />
     )
 }
 

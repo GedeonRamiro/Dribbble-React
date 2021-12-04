@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { apiWithAuth } from '_common/services/api'
 import toast from 'react-hot-toast'
 
+
 export interface IProfile {
     id: string
     name: string
