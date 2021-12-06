@@ -5,6 +5,7 @@ import { IAuth } from 'context/GlobalContext'
 import { useEffect, useState } from 'react'
 import { apiWithAuth } from '_common/services/api'
 import toast from 'react-hot-toast'
+import Button from '_common/components/Button'
 
 
 export interface IProfile {
@@ -45,6 +46,7 @@ const Profile = () => {
 
     const [profile, setProfile] = useState<IProfile>({} as IProfile)
     const [myProfile, setMyProfile] = useState<IProfile>({} as IProfile)
+    const [modal, setModal] = useState(false)
 
 
     useEffect(() => {
@@ -83,6 +85,14 @@ const Profile = () => {
      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [idParams])
 
+    const removeProfile = () => {
+        
+    }
+
+    const openModal = () => {
+        setModal(true)
+    }
+
     if( profile.id === myProfile.id){
         profile.posts = myProfile.posts 
     } 
@@ -90,7 +100,7 @@ const Profile = () => {
 
     return (
         <>
-            <ProfileView profile={profile} {...{isMyProfile}} />
+            <ProfileView profile={profile} {...{isMyProfile, removeProfile, modal, openModal}} />
         </>
     )
 }

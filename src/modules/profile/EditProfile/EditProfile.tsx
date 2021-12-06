@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { apiWithAuth } from '_common/services/api'
 
+
 export interface IProfile {
     id: string
     name: string
@@ -14,23 +15,21 @@ export interface IProfile {
   }
 
 const EditProfile = () => {
+    
 
     const history = useHistory()
-    const { state: profileState } = useLocation<IProfile>()
+    let { state: profileState } = useLocation<IProfile>()
     const { auth : { user: { id: idState }} } = useGlobalState() as {auth: IAuth}
 
     const [profile, setProfile] = useState<IProfile>({} as IProfile)
     const [name, setName] = useState('')
-
-    console.log(name)
-
-
-     
+  
     const getProfile = async () => {
         
         try {
             const { data } = await apiWithAuth.get<IProfile>(`/users/${idState}`)
             setProfile(data)
+            setName(data.name)
             
         } catch (error: any) {
             if(error?.response?.data?.statusCode === 400){
@@ -40,7 +39,7 @@ const EditProfile = () => {
         }
         
     }
-
+    
     const getEditProfile = async () => {
         
         try {
@@ -55,12 +54,11 @@ const EditProfile = () => {
     }
     
     useEffect(() => {
-            if(!profileState){
-                getProfile()
-            }
-            setProfile(profileState)
-            setName(profile.name)
-
+        if(!profileState){
+            getProfile()
+        } 
+        setProfile(profileState)
+        setName(profileState?.name)
          // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [])
 
