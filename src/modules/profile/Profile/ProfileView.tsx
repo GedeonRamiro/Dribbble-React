@@ -4,6 +4,9 @@ import { FaHeart } from 'react-icons/fa'
 import { BsEyeFill } from 'react-icons/bs'
 import  Modal from '_common/components/Modal'
 
+import Button from '_common/components/Button'
+
+
 
 
 interface IProps {
@@ -17,6 +20,10 @@ interface IProps {
 }
 
 const ProfileView: React.FC<IProps> = ( { profile, isMyProfile, removeProfile, setModal, modal, openModal } ) => {      
+
+    if(profile.posts && profile.posts.length > 0){
+        console.log('passou')
+    }
 
     return (
         <>
@@ -42,8 +49,13 @@ const ProfileView: React.FC<IProps> = ( { profile, isMyProfile, removeProfile, s
                                 {isMyProfile && (
                                 <>
                                     <Link to={{ pathname:'/editprofile', state: profile }} >
-                                        <button className='px-3 py-2 mt-6 mr-6 text-xs font-semibold duration-300 bg-gray-100 border rounded-md outline-none md:mt-10 md:text-sm md:px-4 md:py-2 hover:shadow'>Editar Perfil</button>
+                                        <button 
+                                            className='px-3 py-2 mt-6 text-xs font-semibold duration-300 bg-gray-100 border rounded-md outline-none md:mt-10 md:text-sm md:px-4 md:py-2 hover:shadow'>
+                                            Editar Perfil
+                                            
+                                        </button>
                                     </Link>
+                                    <span className='mx-3 text-xl text-pink-500'> | </span>
                                     <button 
                                         className='px-3 py-2 mt-6 text-xs font-semibold duration-300 bg-gray-100 border rounded-md outline-none md:mt-10 md:text-sm md:px-4 md:py-2 hover:shadow' 
                                         onClick={openModal}>
@@ -55,7 +67,7 @@ const ProfileView: React.FC<IProps> = ( { profile, isMyProfile, removeProfile, s
                     </>
                 )}
             </div>
-            {profile.posts && (
+            {profile.posts && profile.posts.length > 0 ? (
                  <div className="grid gap-6 my-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {profile.posts.map(post => (
                         <div className='my-2' key={post.id}>
@@ -80,6 +92,13 @@ const ProfileView: React.FC<IProps> = ( { profile, isMyProfile, removeProfile, s
                     </div>
                     ))}
             </div>
+            ) : (
+                <div className='flex flex-col items-center my-10'>
+                    <div className='mb-4 text-lg font-semibold text-center'>Você não tem nenhum post cadastrado</div>
+                    <Link to='/upload'>
+                        <Button text='Crie seu primeiro post' hover="bg-pink-400" />
+                    </Link>
+                </div>
             )}
         </>    
     )
