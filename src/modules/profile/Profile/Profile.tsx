@@ -5,7 +5,6 @@ import { IAuth } from 'context/GlobalContext'
 import { useEffect, useState } from 'react'
 import { apiWithAuth } from '_common/services/api'
 import toast from 'react-hot-toast'
-import Button from '_common/components/Button'
 
 
 export interface IProfile {
@@ -85,22 +84,30 @@ const Profile = () => {
      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [idParams])
 
-    const removeProfile = () => {
-        
-    }
-
-    const openModal = () => {
-        setModal(true)
-    }
-
     if( profile.id === myProfile.id){
         profile.posts = myProfile.posts 
     } 
-  
 
+
+    const openModal = () => setModal(true)
+
+    const removeProfile = async () => {
+        try {
+            await apiWithAuth.delete('/profile')
+            toast.success('perfil excluir com sucesso!')
+            history.push('/login')
+        } catch (error: any) {
+            console.log({error})
+            toast.error('Erro ao excluir perfil!')
+            setModal(false)
+            //toast.error(error?.response?.data?.message)
+        }
+    }
+
+  
     return (
         <>
-            <ProfileView profile={profile} {...{isMyProfile, removeProfile, modal, openModal}} />
+            <ProfileView profile={profile} {...{isMyProfile, removeProfile, modal, openModal, setModal}} />
         </>
     )
 }
