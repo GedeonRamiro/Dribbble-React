@@ -18,10 +18,7 @@ const Modal: React.FC<IProps> = ( { title, onClick, textBtn, setModal}) => {
             }
     }
 
-    const closeModal = () => {
-        console.log(`fechare modal`)
-        setModal(false)
-    }
+    const closeModal = () => setModal(false)
 
     return (
           <ModalView {...{title, onClick, textBtn, closeModal, handleOnClose }} />

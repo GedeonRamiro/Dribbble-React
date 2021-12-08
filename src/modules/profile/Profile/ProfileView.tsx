@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { FaHeart } from 'react-icons/fa'
 import { BsEyeFill } from 'react-icons/bs'
 import  Modal from '_common/components/Modal'
-
-import Button from '_common/components/Button'
+import { RiEditBoxFill } from 'react-icons/ri'
+import { MdDeleteSweep } from 'react-icons/md'
 
 
 
@@ -13,17 +13,24 @@ interface IProps {
     profile: IProfile
     isMyProfile: boolean
     removeProfile: (ev: React.MouseEvent<HTMLButtonElement>) => void
+    removePost: (ev: React.MouseEvent<HTMLButtonElement>) => void
     modal: boolean
     setModal: (modal: boolean) => void
+    modalPost: boolean
+    setModalPost: (modalPost: boolean) => void
     openModal: () => void
+    openModalPost: () => void
     onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void
+
 }
 
-const ProfileView: React.FC<IProps> = ( { profile, isMyProfile, removeProfile, setModal, modal, openModal } ) => {      
-
-    if(profile.posts && profile.posts.length > 0){
-        console.log('passou')
-    }
+const ProfileView: React.FC<IProps> = ( { 
+    profile,
+    isMyProfile, 
+    removeProfile, removePost,
+    modal, setModal, openModal, 
+    modalPost, setModalPost, openModalPost,
+} ) => {      
 
     return (
         <>
@@ -33,6 +40,14 @@ const ProfileView: React.FC<IProps> = ( { profile, isMyProfile, removeProfile, s
                 onClick={removeProfile} 
                 textBtn='Deletar'
                 setModal={setModal}
+                
+            /> }
+        {modalPost &&  
+            <Modal 
+                title='Tem certeza que quer deletar o post?'
+                onClick={removePost} 
+                textBtn='Deletar'
+                setModal={setModalPost}
                 
             /> }
             <div className='relative flex-wrap my-20 md:flex md:justify-between'>
@@ -89,16 +104,39 @@ const ProfileView: React.FC<IProps> = ( { profile, isMyProfile, removeProfile, s
                                     </div>
                                 </div>
                             </div>
+                           {isMyProfile && (
+                            <>
+                                <div className='flex items-center'>
+                                    <button className='flex items-center p-1 text-white bg-blue-500 rounded outline-none'>
+                                        <span className='mr-1 text-sm'>Editar</span>
+                                        <RiEditBoxFill  />
+                                    </button>
+                                    <span className='mx-3 text-xl text-gray-800'> | </span>
+                                    <button key={post.id} className='flex items-center p-1 text-white bg-red-500 rounded outline-none' onClick={openModalPost} >
+                                        <span className='mr-1 text-sm'>Deletar</span>
+                                        <MdDeleteSweep size={20} />
+                                    </button>
+                                </div>
+                           </>
+                           )}
                     </div>
                     ))}
             </div>
             ) : (
-                <div className='flex flex-col items-center my-10'>
-                    <div className='mb-4 text-lg font-semibold text-center'>Você não tem nenhum post cadastrado</div>
-                    <Link to='/upload'>
-                        <Button text='Crie seu primeiro post' hover="bg-pink-400" />
-                    </Link>
-                </div>
+                <>
+                {profile.name && (
+                    <div className='flex flex-col items-center my-10'>
+                        <div className='mb-4 text-lg font-semibold text-center'>Você não tem nenhum post cadastrado</div>
+                        <Link to='/upload'>
+                            <div className='flex items-center justify-center'>
+                            <p className='mr-2'>Ainda não tem post?</p>
+                            <button className='p-1 font-semibold bg-gray-200 border rounded ai animate-pulse'>click aqui!</button>
+    
+                            </div>
+                        </Link>
+                    </div>
+                )}
+                </>
             )}
         </>    
     )

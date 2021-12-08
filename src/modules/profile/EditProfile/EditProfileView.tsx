@@ -16,7 +16,7 @@ const EditProfileView:React.FC<IProps> = ( { name, setName, profile, getEditProf
             {profile && (
                 <div className='flex flex-col items-center justify-center my-32'>
                     <div className='w-full p-10 border rounded-md sm:w-auto'>
-                        <h4 className='mb-1 text-sm font-semibold w-96'>Nome</h4>  
+                        <h4 className='mb-1 text-sm font-semibold sm:w-96'>Nome</h4>  
                         <div className='w-full'>
                             <Input 
                                 type='text'

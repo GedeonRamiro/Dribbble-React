@@ -46,7 +46,7 @@ const Profile = () => {
     const [profile, setProfile] = useState<IProfile>({} as IProfile)
     const [myProfile, setMyProfile] = useState<IProfile>({} as IProfile)
     const [modal, setModal] = useState(false)
-
+    const [modalPost, setModalPost] = useState(false)
 
     useEffect(() => {
         const getProfile = async () => {
@@ -104,10 +104,30 @@ const Profile = () => {
         }
     }
 
+
+    const openModalPost = () =>{
+        setModalPost(true) 
+    } 
+
+    const removePost = async () => {
+        try {
+            console.log('remover post')
+        } catch (error) {
+            console.log({error})
+        }
+    }
+
   
     return (
         <>
-            <ProfileView profile={profile} {...{isMyProfile, removeProfile, modal, openModal, setModal}} />
+            <ProfileView profile={profile} {...{
+                    isMyProfile, 
+                    removeProfile, removePost,
+                    modal, setModal, openModal, 
+                    modalPost, setModalPost, openModalPost,
+
+                }} 
+            />
         </>
     )
 }
