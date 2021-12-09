@@ -129,13 +129,12 @@ const ProfileView: React.FC<IProps> = ( {
                 {profile.name && (
                     <div className='flex flex-col items-center my-10'>
                         <div className='mb-4 text-lg font-semibold text-center'>Você não tem nenhum post cadastrado</div>
-                        <Link to='/upload'>
                             <div className='flex items-center justify-center'>
-                            <p className='mr-2'>Ainda não tem post?</p>
-                            <button className='p-1 font-semibold bg-gray-200 border rounded ai animate-pulse'>click aqui!</button>
-    
+                                <p className='mr-2'>Ainda não tem post?</p>
+                                <Link to='/upload'>
+                                    <button className='p-1 font-semibold bg-gray-200 border rounded ai animate-pulse'>click aqui!</button>
+                                </Link>
                             </div>
-                        </Link>
                     </div>
                 )}
                 </>
