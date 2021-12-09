@@ -1,3 +1,4 @@
+import { useGlobalState, IAuth } from "context/GlobalContext"
 import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { apiWithAuth } from "_common/services/api"
@@ -11,6 +12,8 @@ export interface IUsers {
   }
 
 const Users = () => {
+
+    const { auth: { user: { id: idState }} } = useGlobalState() as {auth: IAuth}
 
     const [users, setUsers] = useState<IUsers[]>([] as IUsers[])
 
@@ -31,7 +34,7 @@ const Users = () => {
 
 
     return (
-       <UsersView users={users}  />
+       <UsersView users={users} {...{idState}}  />
     )
 }
 
