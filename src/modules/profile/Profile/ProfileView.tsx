@@ -107,10 +107,12 @@ const ProfileView: React.FC<IProps> = ( {
                            {isMyProfile && (
                             <>
                                 <div className='flex items-center'>
-                                    <button className='flex items-center p-1 text-white bg-blue-500 rounded outline-none'>
-                                        <span className='mr-1 text-sm'>Editar</span>
-                                        <RiEditBoxFill  />
-                                    </button>
+                                    <Link to={{ pathname: `/upload`, state: post }}>
+                                        <button className='flex items-center p-1 text-white bg-blue-500 rounded outline-none'>
+                                            <span className='mr-1 text-sm'>Editar</span>
+                                            <RiEditBoxFill  />
+                                        </button>
+                                    </Link>
                                     <span className='mx-3 text-xl text-gray-800'> | </span>
                                     <button key={post.id} className='flex items-center p-1 text-white bg-red-500 rounded outline-none' onClick={openModalPost} >
                                         <span className='mr-1 text-sm'>Deletar</span>

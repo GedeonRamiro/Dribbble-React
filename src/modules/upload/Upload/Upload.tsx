@@ -1,21 +1,27 @@
 import UploadView from './UploadView'
-import { useState } from "react"
-import { useHistory } from 'react-router-dom'
+import { useEffect, useState } from "react"
+import { useHistory, useLocation } from 'react-router-dom'
 import toast from 'react-hot-toast';
 import { apiWithAuth } from '_common/services/api'
 
+export interface IPost {
+    id: string
+    image_url: string,
+    title: string
+    description: string
+}
 
 const Upload = () => {
 
     const history = useHistory()
-    
+    const { state } = useLocation<IPost>()
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [file, setFile] = useState('')
     const [loading, setLoading] = useState(false)
     
-    
+    console.log({title, description})
 
     const isDisabled = loading
         
@@ -27,8 +33,6 @@ const Upload = () => {
     
     const createPost = async () => {
           
-
-        
         let formData = new FormData();
         formData.append("title", title);
         formData.append("description", description);
@@ -52,6 +56,25 @@ const Upload = () => {
         setLoading(false)
     }
 
+    const EditPost = async () => {
+        try {
+            setLoading(true)
+            await apiWithAuth.put(`/posts/${state.id}`, {title, description})
+            toast.success('Post atualizado com sucesso!')
+            history.push('/profile')
+
+        } catch (error: any) {
+            console.log({error})
+            toast.error(error?.response?.data?.message)
+        }
+        setLoading(false)
+    }
+    
+    useEffect(() => {
+        setTitle(state?.title)
+        setDescription(state?.description)
+    }, [])
+
     
     return (
         <>
@@ -61,9 +84,10 @@ const Upload = () => {
                 description, setDescription,
                 file, setFile,
                 isDisabled,
-                createPost,
+                createPost, EditPost,
                 loading, setLoading,
-                up
+                up,
+                state
             }}
              />
         </>
