@@ -1,5 +1,4 @@
-import { Interface } from 'readline'
-import Button from '_common/components/Button'
+
 import { IUsers } from './Users'
 
 interface IProps {
