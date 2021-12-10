@@ -5,6 +5,7 @@ import { BsEyeFill } from 'react-icons/bs'
 import  Modal from '_common/components/Modal'
 import { RiEditBoxFill } from 'react-icons/ri'
 import { MdDeleteSweep } from 'react-icons/md'
+import { profile } from 'console'
 
 
 
@@ -31,6 +32,9 @@ const ProfileView: React.FC<IProps> = ( {
     modal, setModal, openModal, 
     modalPost, setModalPost, openModalPost,
 } ) => {      
+
+    //console.log(profile.posts.length < 1)
+
 
     return (
         <>
@@ -82,7 +86,8 @@ const ProfileView: React.FC<IProps> = ( {
                     </>
                 )}
             </div>
-            {profile.posts && profile.posts.length > 0 ? (
+
+            {profile.posts &&  (
                  <div className="grid gap-6 my-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {profile.posts.map(post => (
                         <div className='my-2' key={post.id}>
@@ -124,21 +129,26 @@ const ProfileView: React.FC<IProps> = ( {
                     </div>
                     ))}
             </div>
-            ) : (
-                <>
-                {profile.name && (
-                    <div className='flex flex-col items-center my-10'>
-                        <div className='mb-4 text-lg font-semibold text-center'>Você não tem nenhum post cadastrado</div>
-                            <div className='flex items-center justify-center'>
-                                <p className='mr-2'>Ainda não tem post?</p>
-                                <Link to='/upload'>
-                                    <button className='p-1 font-semibold bg-gray-200 border rounded ai animate-pulse'>click aqui!</button>
-                                </Link>
-                            </div>
-                    </div>
-                )}
-                </>
+            )} 
+              
+            {profile.posts && profile.posts.length < 1 && (
+                <div className='flex flex-col items-center'>
+                     <div className='mb-4 text-lg font-semibold text-center'>Nenhum post cadastrado</div>
+                 </div>
             )}
+
+            {profile.posts && profile.posts.length < 1 && isMyProfile && (
+               <div className='flex items-center justify-center mb-10'>
+                    <p className='mr-2'>Ainda não tem post?</p>
+                    <Link to='/upload'>
+                        <button className='p-1 font-semibold bg-gray-200 border rounded ai animate-pulse'>click aqui!</button>
+                    </Link>
+                </div>
+            )}
+
+            
+               
+           
         </>    
     )
 }
