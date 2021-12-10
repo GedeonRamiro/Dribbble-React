@@ -20,8 +20,6 @@ const Upload = () => {
     const [description, setDescription] = useState('')
     const [file, setFile] = useState('')
     const [loading, setLoading] = useState(false)
-    
-    console.log({title, description})
 
     const isDisabled = loading
         
@@ -73,7 +71,7 @@ const Upload = () => {
     useEffect(() => {
         setTitle(state?.title)
         setDescription(state?.description)
-    }, [])
+    }, [state?.description, state?.title])
 
     
     return (

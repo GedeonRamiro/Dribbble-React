@@ -10,13 +10,12 @@ interface IProps {
 
 const UsersView: React.FC<IProps> = ({users, idState}) => {
     
-    console.log(users?.map(user => user.name))
 
     return (
         <>
             <div className="grid my-20 gap-y-14 gap-x-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {users.map(user => (
-                    <div className="relative flex flex-col items-center justify-center pt-20 bg-gray-100 rounded-md shadow-md hover:shadow-lg">
+                    <div key={user.id} className="relative flex flex-col items-center justify-center pt-20 bg-gray-100 rounded-md shadow-md hover:shadow-lg">
                         <div className="absolute z-10 p-2 transition bg-gray-400 rounded-full shadow-lg w-28 h-28 -top-8 hover:shadow-xl">
                             <div className="w-full h-full overflow-auto bg-black rounded-full">
                                 <img src={`https://robohash.org/${user.name}`} alt={user.name} className='bg-pink-400' />

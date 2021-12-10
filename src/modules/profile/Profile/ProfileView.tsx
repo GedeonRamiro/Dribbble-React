@@ -5,8 +5,6 @@ import { BsEyeFill } from 'react-icons/bs'
 import  Modal from '_common/components/Modal'
 import { RiEditBoxFill } from 'react-icons/ri'
 import { MdDeleteSweep } from 'react-icons/md'
-import { profile } from 'console'
-
 
 
 
@@ -133,7 +131,7 @@ const ProfileView: React.FC<IProps> = ( {
               
             {profile.posts && profile.posts.length < 1 && (
                 <div className='flex flex-col items-center'>
-                     <div className='mb-4 text-lg font-semibold text-center'>Nenhum post cadastrado</div>
+                     <div className='mb-10 text-lg font-semibold text-center'>Nenhum post cadastrado</div>
                  </div>
             )}
 
