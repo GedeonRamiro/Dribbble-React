@@ -50,9 +50,8 @@ const Profile = () => {
     const [titlePost, setTitlePost] = useState('')
     const [idPost, setIdPost] = useState('')
 
-    useEffect(() => {
-        const getProfile = async () => {
-            
+    const getProfile = async () => {
+        
             try {
                 const { data } = await apiWithAuth.get<IProfile>(isMyProfile ? '/profile' : `/users/${idParams}`)
                 setProfile(data)
@@ -65,12 +64,11 @@ const Profile = () => {
             }
                 
         }
-        getProfile()
-
-    const myProfile = async () => {
-        try {
-            const { data } = await apiWithAuth.get<IProfile>(`/users/${idState}`)
-            setMyProfile(data)
+        
+        const getMyProfile = async () => {
+            try {
+                const { data } = await apiWithAuth.get<IProfile>(`/users/${idState}`)
+                setMyProfile(data)
 
         } catch (error: any) {
             if(error?.response?.data?.statusCode === 400){
@@ -80,21 +78,12 @@ const Profile = () => {
         }
     }   
     
-    myProfile()
     
-
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [idParams])
-
-    if( profile.id === myProfile.id){
-        profile.posts = myProfile.posts 
-    } 
-
-
+    
     const openModalProfile = () => {
         setModalProfile(true)
     }
-
+    
     const removeProfile = async () => {
         try {
             await apiWithAuth.delete('/profile')
@@ -108,17 +97,18 @@ const Profile = () => {
         }
     }
 
-
+    
     const openModalPost = (id: string, title: string) => {
         setIdPost(id) 
         setTitlePost(title)
         setModalPost(true) 
     } 
-
+    
     const removePost = async () => {
         try {
             await apiWithAuth.delete(`/posts/${idPost}`)
             toast.success('Post excluir com sucesso!')
+            getMyProfile()
             setModalPost(false)
         } catch (error) {
             console.log({error})
@@ -126,8 +116,20 @@ const Profile = () => {
             setModalPost(false)
         }
     }
+    
+    
+    useEffect(() => {
+        getMyProfile()
+        getProfile()
+        
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [idParams])
   
+        if( profile.id === myProfile.id){
+            profile.posts = myProfile.posts 
+        } 
+        
     return (
         <>
             <ProfileView profile={profile} {...{
