@@ -45,8 +45,10 @@ const Profile = () => {
 
     const [profile, setProfile] = useState<IProfile>({} as IProfile)
     const [myProfile, setMyProfile] = useState<IProfile>({} as IProfile)
-    const [modal, setModal] = useState(false)
+    const [modalProfile, setModalProfile] = useState(false)
     const [modalPost, setModalPost] = useState(false)
+    const [titlePost, setTitlePost] = useState('')
+    const [idPost, setIdPost] = useState('')
 
     useEffect(() => {
         const getProfile = async () => {
@@ -89,7 +91,9 @@ const Profile = () => {
     } 
 
 
-    const openModal = () => setModal(true)
+    const openModalProfile = () => {
+        setModalProfile(true)
+    }
 
     const removeProfile = async () => {
         try {
@@ -99,21 +103,27 @@ const Profile = () => {
         } catch (error: any) {
             console.log({error})
             toast.error('Erro ao excluir perfil!')
-            setModal(false)
+            setModalProfile(false)
             //toast.error(error?.response?.data?.message)
         }
     }
 
 
-    const openModalPost = () =>{
+    const openModalPost = (id: string, title: string) => {
+        setIdPost(id) 
+        setTitlePost(title)
         setModalPost(true) 
     } 
 
     const removePost = async () => {
         try {
-            console.log('remover post')
+            await apiWithAuth.delete(`/posts/${idPost}`)
+            toast.success('Post excluir com sucesso!')
+            setModalPost(false)
         } catch (error) {
             console.log({error})
+            toast.error('Erro ao apagar o post!')
+            setModalPost(false)
         }
     }
 
@@ -123,8 +133,9 @@ const Profile = () => {
             <ProfileView profile={profile} {...{
                     isMyProfile, 
                     removeProfile, removePost,
-                    modal, setModal, openModal, 
+                    modalProfile, setModalProfile, openModalProfile, 
                     modalPost, setModalPost, openModalPost,
+                    titlePost
 
                 }} 
             />

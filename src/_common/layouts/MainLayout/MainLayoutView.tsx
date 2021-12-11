@@ -12,8 +12,9 @@ interface IProps {
 
 const MainLayoutView: React.FC<IProps> = ( {children, logout, username} ) => {
 
+
     return (
-      <div className='container mx-auto my-8'>
+      <div className='container mx-auto my-8 '>
         <div className='mx-4'>
           <nav className='flex items-center justify-between'>
             

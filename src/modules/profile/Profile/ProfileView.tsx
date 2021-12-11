@@ -5,6 +5,7 @@ import { BsEyeFill } from 'react-icons/bs'
 import  Modal from '_common/components/Modal'
 import { RiEditBoxFill } from 'react-icons/ri'
 import { MdDeleteSweep } from 'react-icons/md'
+import { title } from 'process'
 
 
 
@@ -13,13 +14,14 @@ interface IProps {
     isMyProfile: boolean
     removeProfile: (ev: React.MouseEvent<HTMLButtonElement>) => void
     removePost: (ev: React.MouseEvent<HTMLButtonElement>) => void
-    modal: boolean
-    setModal: (modal: boolean) => void
+    modalProfile: boolean
+    setModalProfile: (modal: boolean) => void
     modalPost: boolean
     setModalPost: (modalPost: boolean) => void
-    openModal: () => void
-    openModalPost: () => void
+    openModalProfile: () => void
+    openModalPost: (id: string, title: string) => void
     onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void
+    titlePost: string
 
 }
 
@@ -27,21 +29,21 @@ const ProfileView: React.FC<IProps> = ( {
     profile,
     isMyProfile, 
     removeProfile, removePost,
-    modal, setModal, openModal, 
+    modalProfile, setModalProfile, openModalProfile, 
     modalPost, setModalPost, openModalPost,
+    titlePost
 } ) => {      
 
-    //console.log(profile.posts.length < 1)
 
 
     return (
         <>
-        {modal &&  
+        {modalProfile &&  
             <Modal 
                 title='Tem certeza que quer deletar sua conta? Este processo não pode ser desfeito'
                 onClick={removeProfile} 
                 textBtn='Deletar'
-                setModal={setModal}
+                isOpenModal={setModalProfile}
                 
             /> }
         {modalPost &&  
@@ -49,7 +51,8 @@ const ProfileView: React.FC<IProps> = ( {
                 title='Tem certeza que quer deletar o post?'
                 onClick={removePost} 
                 textBtn='Deletar'
-                setModal={setModalPost}
+                isOpenModal={setModalPost}
+                titlePost={titlePost}
                 
             /> }
             <div className='relative flex-wrap my-20 md:flex md:justify-between'>
@@ -75,7 +78,7 @@ const ProfileView: React.FC<IProps> = ( {
                                     <span className='mx-3 text-xl text-pink-500'> | </span>
                                     <button 
                                         className='px-3 py-2 mt-6 text-xs font-semibold duration-300 bg-gray-100 border rounded-md outline-none md:mt-10 md:text-sm md:px-4 md:py-2 hover:shadow' 
-                                        onClick={openModal}>
+                                        onClick={openModalProfile}>
                                         Excluir Perfil
                                     </button>
                                 </>
@@ -117,7 +120,7 @@ const ProfileView: React.FC<IProps> = ( {
                                         </button>
                                     </Link>
                                     <span className='mx-3 text-xl text-gray-800'> | </span>
-                                    <button key={post.id} className='flex items-center p-1 text-white bg-red-500 rounded outline-none' onClick={openModalPost} >
+                                    <button key={post.id} className='flex items-center p-1 text-white bg-red-500 rounded outline-none' onClick={() => openModalPost(post.id, post.title)} >
                                         <span className='mr-1 text-sm'>Deletar</span>
                                         <MdDeleteSweep size={20} />
                                     </button>

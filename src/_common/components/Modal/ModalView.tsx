@@ -6,9 +6,10 @@ interface IProps {
     textBtn: string
     closeModal: () => void
     handleOnClose: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+    titlePost?: string
 }
 
-const ModalView: React.FC<IProps> = ( { title, onClick, textBtn, closeModal, handleOnClose }) => {
+const ModalView: React.FC<IProps> = ( { title, onClick, textBtn, closeModal, handleOnClose, titlePost }) => {
     
     return (
         <div className="fixed inset-0 top-0 left-0 z-50 flex items-center justify-center h-screen px-4 bg-center bg-no-repeat bg-cover outline-none min-w-screen animated fadeIn faster focus:outline-none" >
@@ -16,6 +17,7 @@ const ModalView: React.FC<IProps> = ( { title, onClick, textBtn, closeModal, han
             <div className="relative w-full max-w-lg p-5 mx-auto my-auto bg-white shadow-lg rounded-xl ">
             <div className="">
                 <div className="justify-center flex-auto p-5 text-center">
+                    {titlePost && (<h4 className="font-semibold text-xl mb-4">{titlePost}</h4>)}
                     <h4 className='text-lg'>{title}</h4>
                 </div>
                 
