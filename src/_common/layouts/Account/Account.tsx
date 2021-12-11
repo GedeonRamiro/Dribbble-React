@@ -6,7 +6,7 @@ const Account: React.FC = ( {children} ) => {
     return (
         <>
         <div className='relative flex font-Inter'>
-            <div className='hidden lg:block'><img className='h-screen bg-cover' src={accountbg} alt='account' /></div>
+            <div className='hidden lg:block'><img className='h-screen ' src={accountbg} alt='account' /></div>
             <div className='flex flex-col justify-center mx-auto'>
                 <div className='block w-20 mx-4 mt-10 mb-6 lg:hidden'><img src={logo} alt='logo' /></div>
                 <h6 className='mx-4 mb-6 text-2xl font-bold' >Entre para Dribbble</h6>
