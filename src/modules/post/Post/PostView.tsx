@@ -12,7 +12,6 @@ interface IProps {
 const PostView:React.FC<IProps> = ( {postInfo, idState} ) => {
 
 
-  
     return (
         <>
         {postInfo.title && (
