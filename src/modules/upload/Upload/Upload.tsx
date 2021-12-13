@@ -69,8 +69,14 @@ const Upload = () => {
     }
     
     useEffect(() => {
-        setTitle(state?.title)
-        setDescription(state?.description)
+        if(!title && !description ) {
+        return (setTitle(state?.title), setDescription(state?.description))
+
+        } 
+            setTitle('')
+            setDescription('')
+
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state?.description, state?.title])
 
     

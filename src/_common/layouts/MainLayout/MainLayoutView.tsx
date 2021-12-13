@@ -8,11 +8,28 @@ import { FaUpload } from 'react-icons/fa'
 interface IProps {
   username?: string
   logout: (ev: React.MouseEvent<HTMLButtonElement>) => void
+  pathname: string
 }
 
-const MainLayoutView: React.FC<IProps> = ( {children, logout, username} ) => {
+const MainLayoutView: React.FC<IProps> = ( {children, logout, username, pathname} ) => {
 
+   const menuArray = [
+    {to: '/', pathname: '/', name: 'Home'},
+    {to: '/users', pathname: '/users', name: 'Usuários'},
+    {to: '/profile', pathname: '/profile', name: 'Perfil'},
+    {to: '/upload', pathname: '/upload', name: 'Upload'}
+  ]
 
+    const linkClass = `
+      mx-4 
+      ${pathname ? 'bg-pink-600' : ''} 
+      text-white 
+      rounded-md
+      py-1
+      px-4
+      shadow
+    `
+  
     return (
       <div className='container mx-auto my-8 '>
         <div className='mx-4'>
@@ -26,26 +43,16 @@ const MainLayoutView: React.FC<IProps> = ( {children, logout, username} ) => {
               </button>  
             </div> 
                 
-            <div className='flex text-base text-gray-500 lg:flex'>
+            <div className='flex text-base text-gray-500 lg:flex lg: items-center'>
                 <Link to='/' className='pr-4 ml-10 lg:ml-0'>
                       <img className='w-20' src={logo} alt="logo" />
                 </Link>
-              <div className='hidden lg:flex'>
-                  <Link to='/' className='mx-4'>
-                      Inspiration
-                  </Link>
-                  <Link to='/' className='mx-4'>
-                      Find Work
-                  </Link>
-                  <Link to='/' className='mx-4'>
-                      Learn Design
-                  </Link>
-                  <Link to='/' className='mx-4'>
-                      Go Pro
-                  </Link>
-                  <Link to='/' className='ml-4'>
-                      Hire Designers
-                  </Link>
+              <div className='hidden lg:flex lg: items-center'>
+                {menuArray.map( menu => (
+                   <Link to={menu.to} className={ pathname === `${menu.pathname}` ? linkClass : 'bg-gray-100 py-1 px-4 rounded-md mx-4'}>
+                      {menu.name}
+                   </Link>
+                ))}
               </div>
             </div>
             <div className='flex items-center justify-center'>
@@ -58,8 +65,8 @@ const MainLayoutView: React.FC<IProps> = ( {children, logout, username} ) => {
               <Button text='Logout' width='w-20' hover='bg-pink-400' onClick={logout}/>
             </div>
           </nav>
-            {children}
         </div>
+            {children}
         <footer>
           <div className='text-center text-gray-500'>
             <h4>© 2021 Dribbble. All rights reserved.</h4>
