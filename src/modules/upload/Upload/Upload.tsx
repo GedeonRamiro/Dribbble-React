@@ -22,8 +22,6 @@ const Upload = () => {
     const [loading, setLoading] = useState(false)
 
     const isDisabled = loading
-
-    //console.log(title, description)
         
 
     const up = (e: any) => {
@@ -73,21 +71,14 @@ const Upload = () => {
     useEffect(() => {
         if(!title && !description ) {
         return (setTitle(state?.title), setDescription(state?.description))
-<<<<<<< HEAD
-
-        } 
-            setTitle('')
-            setDescription('')
-
-=======
            
         } 
             setTitle('')
             setDescription('')
         
->>>>>>> db1624e21c1de599de4a1ad49e201ff4c455dbf3
          // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state?.description, state?.title])
+
 
     
     return (
