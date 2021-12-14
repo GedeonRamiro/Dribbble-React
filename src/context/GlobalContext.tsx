@@ -14,6 +14,7 @@ interface IGlobalState {
     auth?: IAuth
     setAuth: (auth: IAuth) => void
     removeAuth: () => void
+    setName: (name: string) => void
 }
 
 function getLocalStorage(){
@@ -32,12 +33,22 @@ export const GlobalStateProvider: React.FC = ({ children }) => {
         return setAuthState(auth)
     }
 
+    const setName = (name: string) => {
+        if(!auth) return
+
+        const newName = auth
+        newName.user.name = name
+
+        localStorage.removeItem("@dribbble: auth")
+        localStorage.setItem("@dribbble:auth", JSON.stringify(newName))
+    }
+
     const removeAuth = () => {
         localStorage.removeItem("@dribbble:auth")
         setAuthState(undefined)
     }
     return(
-        <GlobalContext.Provider value={ {auth, setAuth, removeAuth} }>
+        <GlobalContext.Provider value={ {auth, setAuth, setName, removeAuth} }>
             {children}
         </GlobalContext.Provider>
     )

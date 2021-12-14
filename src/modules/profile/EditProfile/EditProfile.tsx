@@ -14,12 +14,15 @@ export interface IProfile {
     password: string
   }
 
+
+
 const EditProfile = () => {
     
 
     const history = useHistory()
     let { state: profileState } = useLocation<IProfile>()
     const { auth : { user: { id: idState }} } = useGlobalState() as {auth: IAuth}
+    const { setName: setNameState } = useGlobalState()
 
     const [profile, setProfile] = useState<IProfile>({} as IProfile)
     const [name, setName] = useState('')
@@ -45,6 +48,7 @@ const EditProfile = () => {
         try {
             await apiWithAuth.put('/profile', {name})
             toast.success('Perfil atualizado com sucesso!')
+            setNameState(name)
             history.push('/profile')
         } catch (error: any) {
             console.log({error})
