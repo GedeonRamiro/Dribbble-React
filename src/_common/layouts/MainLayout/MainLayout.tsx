@@ -20,15 +20,8 @@ const MainLayout: React.FC = ({ children }) => {
         history.push('/login')
     }
 
-    const handleOnClose = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        console.log(event.target)
-        if(event.target === event.currentTarget){
-            setOpenMenu(false)
-        }
-}
-
     return (
-        <MainLayoutView {...{children, logout, username, pathname, openMenu, setOpenMenu, handleOnClose}}  />
+        <MainLayoutView {...{children, logout, username, pathname, openMenu, setOpenMenu}}  />
     )
 }
 

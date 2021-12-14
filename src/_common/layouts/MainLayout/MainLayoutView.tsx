@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import logo from 'assets/images/logo.png'
 import Button from '_common/components/Button'
 import { FaUpload } from 'react-icons/fa'
-
+import { AiOutlineClose } from 'react-icons/ai'
 
 
 interface IProps {
@@ -11,10 +11,9 @@ interface IProps {
   pathname: string
   openMenu: boolean
   setOpenMenu: (openMenu: boolean) => void
-  handleOnClose: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
-const MainLayoutView: React.FC<IProps> = ( {children, logout, username, pathname, openMenu, setOpenMenu, handleOnClose} ) => {
+const MainLayoutView: React.FC<IProps> = ( {children, logout, username, pathname, openMenu, setOpenMenu} ) => {
 
    const menuArray = [
     {to: '/', pathname: '/', name: 'Home'},
@@ -45,36 +44,33 @@ const MainLayoutView: React.FC<IProps> = ( {children, logout, username, pathname
   `
   
     return (
+      <>
       <div className='container mx-auto my-8 '>
         <div className='mx-4'>
           <nav className='flex items-center justify-between '>
             
             <div className='block outline-none lg:hidden' onClick={() => setOpenMenu(!openMenu)}>
               <button className="flex flex-col outline-none"  >
-                  {openMenu ? (
-                    <>
-                    <span className="w-6 h-2 transform rotate-45 border-b-2 border-gray-500"></span>
-                    <span className="w-6 h-2 transform -rotate-45 -translate-y-1 border-t-2 border-gray-500"></span>
-                    </>
-                  ) : (
-                    <>
-                    <span className="w-6 h-2 border-b-2 border-gray-500"></span>
-                    <span className="w-6 h-2 border-b-2 border-gray-500"></span>
-                    <span className="w-6 h-2 border-b-2 border-gray-500"></span>
-                    </>
-                  )}
+                <span className="w-6 h-2 border-b-2 border-gray-500"></span>
+                <span className="w-6 h-2 border-b-2 border-gray-500"></span>
+                <span className="w-6 h-2 border-b-2 border-gray-500"></span>
               </button>
               {openMenu && (
                 <>
-              <nav onClick={handleOnClose}>
-                <div className='absolute z-50 flex flex-col mt-2 bg-pink-50 w-72 rounded-xl'>
+               <nav >
+                <div className='z-50 flex flex-col max-h-80 bg-pink-50 fixed rounded-xl inset-0 top-0 left-0' >
+                  <div>
+                  <button className='text-pink-500 text-3xl mx-6 mt-6'>
+                      <AiOutlineClose />
+                  </button>
+                  </div>
                   {menuArray.map( menu => (
                     <Link to={menu.to} className={ pathname === `${menu.pathname}` ? linkClassMenu : 'px-4 py-1 mx-4 my-4'}>
                         {menu.name}
                     </Link>
                   ))}
                 </div>
-              </nav>  
+              </nav>   
               </>
               )}
             </div> 
@@ -113,6 +109,7 @@ const MainLayoutView: React.FC<IProps> = ( {children, logout, username, pathname
           </div>
         </footer>
       </div>
+    </>
     )
 }
 
