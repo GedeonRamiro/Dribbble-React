@@ -38,8 +38,9 @@ const Profile = () => {
     const { auth: 
             { user: 
                 { id: idState } 
-            } 
+            }, 
         } = useGlobalState() as {auth: IAuth}
+    const { removeAuth } = useGlobalState()    
 
     const isMyProfile = !idParams || idParams === idState
 
@@ -88,6 +89,7 @@ const Profile = () => {
         try {
             await apiWithAuth.delete('/profile')
             toast.success('perfil excluir com sucesso!')
+            removeAuth()
             history.push('/login')
         } catch (error: any) {
             console.log({error})
