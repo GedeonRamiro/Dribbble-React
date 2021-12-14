@@ -31,6 +31,8 @@ const Post = () => {
 
     const [postInfo, setpostInfo] = useState<IPost>({} as IPost) 
 
+    console.log(postInfo)
+
     useEffect(() => {
 
         const getPost = async () => {
