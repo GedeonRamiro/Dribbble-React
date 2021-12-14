@@ -44,7 +44,6 @@ const MainLayoutView: React.FC<IProps> = ( {children, logout, username, pathname
   `
   
     return (
-      <>
       <div className='container mx-auto my-8 '>
         <div className='mx-4'>
           <nav className='flex items-center justify-between '>
@@ -58,9 +57,9 @@ const MainLayoutView: React.FC<IProps> = ( {children, logout, username, pathname
               {openMenu && (
                 <>
                <nav >
-                <div className='z-50 flex flex-col max-h-80 bg-pink-50 fixed rounded-xl inset-0 top-0 left-0' >
+                <div className='fixed inset-0 top-0 left-0 z-50 flex flex-col max-h-80 bg-pink-50 rounded-xl' >
                   <div>
-                  <button className='text-pink-500 text-3xl mx-6 mt-6'>
+                  <button className='mx-6 mt-6 text-3xl text-pink-500 '>
                       <AiOutlineClose />
                   </button>
                   </div>
@@ -99,7 +98,6 @@ const MainLayoutView: React.FC<IProps> = ( {children, logout, username, pathname
           </nav>
                   
             {children}
-
         </div>
         
         <footer>
@@ -109,7 +107,7 @@ const MainLayoutView: React.FC<IProps> = ( {children, logout, username, pathname
           </div>
         </footer>
       </div>
-    </>
+    
     )
 }
 

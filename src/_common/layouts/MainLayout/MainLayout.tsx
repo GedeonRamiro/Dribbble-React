@@ -1,4 +1,4 @@
-import MainLayoutView from "./MainLayoutView"
+import MainLayoutView from './MainLayoutView'
 import { useGlobalState } from 'context/GlobalContext'
 import { useHistory } from "react-router-dom"
 import { useLocation } from "react-router-dom"
