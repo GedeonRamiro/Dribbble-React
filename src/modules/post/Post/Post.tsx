@@ -19,19 +19,20 @@ export interface IPost {
         image_url: string
         bio: string
     }
+    created_at: string
+    updated_at: string
  }
 
-const Post = () => {
-    const RouteMatch = useRouteMatch<MatchParams>("/post/:id");
-    const history = useHistory()
-
+ 
+ const Post = () => {
+     const RouteMatch = useRouteMatch<MatchParams>("/post/:id");
+     const history = useHistory()
+     
     const idParams = RouteMatch?.params?.id
 
     const { auth: { user: { id: idState }} } = useGlobalState() as {auth: IAuth}
 
     const [postInfo, setpostInfo] = useState<IPost>({} as IPost) 
-
-    console.log(postInfo)
 
     useEffect(() => {
 

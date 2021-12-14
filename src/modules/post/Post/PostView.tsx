@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { IPost } from './Post'
 import { AiFillSave } from 'react-icons/ai'
 import { AiFillLike } from 'react-icons/ai'
+import formatDate from '_common/utils/formatDate'
 
 interface IProps {
     postInfo: IPost
@@ -43,7 +44,16 @@ const PostView:React.FC<IProps> = ( {postInfo, idState} ) => {
                     <div className='flex justify-center my-10'>
                         <img className='bg-contain rounded' src={postInfo.image_url} alt={postInfo.title} />
                     </div>
-                    <h3 className='leading-relaxed tracking-wide text-gray-500 lg:leading-relaxed md:text-base lg:text-lg'>{postInfo.description}</h3>
+                    <div className='flex text-sm leading-relaxed tracking-wide text-gray-500 lg:leading-relaxed md:text-base lg:text-base'>
+                        <p className='mb-4'>{formatDate(new Date(postInfo.created_at))}</p>
+                        {postInfo.created_at !== postInfo.updated_at && (
+                            <>
+                            <span className='mx-2 font-semibold'> | </span>
+                            <p className='mb-4'> Atualizado { formatDate(new Date(postInfo.updated_at))}</p>
+                            </>
+                        )}
+                    </div>
+                        <h3 className='leading-relaxed tracking-wide text-gray-500 lg:leading-relaxed md:text-base lg:text-lg'>{postInfo.description}</h3>
                 </div>
             </div>
         )}
