@@ -1,5 +1,6 @@
 
 import { Link } from 'react-router-dom'
+import Input from '_common/components/Input'
 import { IUsers } from './Users'
 
 interface IProps {
@@ -12,6 +13,11 @@ const UsersView: React.FC<IProps> = ({users, idState}) => {
     
 
     return (
+        <>
+            <div className='my-10 text-center'>
+                <h4 className='mb-2 font-semibold text-gray-600 uppercase'>Pesquisar usuário</h4>
+                <Input type='text'/>
+            </div>
             <div className="grid my-20 gap-y-14 gap-x-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {users.map(user => (
                     <div key={user.id} className="relative flex flex-col items-center justify-center pt-20 bg-gray-100 rounded-md shadow-md hover:shadow-lg">
@@ -33,6 +39,7 @@ const UsersView: React.FC<IProps> = ({users, idState}) => {
                     </div>
             ))} 
            </div>
+        </>
       
     )
 }
