@@ -74,10 +74,14 @@ const MainLayoutView: React.FC<IProps> = ( {children, logout, username, pathname
               )}
             </div> 
                 
-            <div className='flex items-center text-base text-gray-500 lg:flex lg:'>
-                <Link to='/' className='pr-4 ml-10 lg:ml-0'>
+            <div className='flex items-center text-base text-gray-500 lg:flex'>
+              <div className='pr-4 ml-10 lg:ml-0'>
+                <Link to='/'>
                       <img className='w-20' src={logo} alt="logo" />
                 </Link>
+              </div>
+
+             
               <div className='items-center hidden lg:flex'>
                 {menuArray.map( menu => (
                    <Link to={menu.to} className={ pathname === `${menu.pathname}` ? linkClass : 'bg-gray-100 py-1 px-4 rounded-md mx-4'}>
