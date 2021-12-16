@@ -40,7 +40,7 @@ const Users = () => {
             }
         }
         getUsers()
-        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debouncedSearchTerm, setFilterUsers])
     
 
@@ -53,7 +53,7 @@ const Users = () => {
             console.log('debouncedSearchTerm', result)    
             setUsers(result)
         };
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[filterUsers])
 
 
