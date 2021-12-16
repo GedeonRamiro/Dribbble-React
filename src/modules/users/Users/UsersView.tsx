@@ -6,17 +6,18 @@ import { IUsers } from './Users'
 interface IProps {
     users: IUsers[]
     idState: string
+    handleChangeSearchTerm: React.ChangeEventHandler<HTMLInputElement>
 }
 
 
-const UsersView: React.FC<IProps> = ({users, idState}) => {
+const UsersView: React.FC<IProps> = ({users, idState, handleChangeSearchTerm}) => {
     
 
     return (
         <>
             <div className='my-10 text-center'>
                 <h4 className='mb-2 font-semibold text-gray-600 uppercase'>Pesquisar usuário</h4>
-                <Input type='text'/>
+                <Input type='text' onChange={handleChangeSearchTerm}/>
             </div>
             <div className="grid my-20 gap-y-14 gap-x-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {users.map(user => (
