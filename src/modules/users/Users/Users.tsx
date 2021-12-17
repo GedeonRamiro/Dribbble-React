@@ -21,6 +21,7 @@ const Users = () => {
     const [searchTerm, setSerachTerm] = useState('');
     const [filterUsers, setFilterUsers] = useState([])
 
+
     const debouncedSearchTerm = useDebounce(searchTerm)
 
     const handleChangeSearchTerm = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,20 +46,19 @@ const Users = () => {
     
 
     useEffect(() => {
-       
-        if(users){
+      
             const result = users.filter(
                 (user) => user.name.toLowerCase().includes(searchTerm.toLowerCase()) 
             )
-            console.log('debouncedSearchTerm', result)    
+        
             setUsers(result)
-        };
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[filterUsers])
 
 
     return (
-       <UsersView users={users} {...{idState, handleChangeSearchTerm}}  />
+       <UsersView users={users} {...{idState, handleChangeSearchTerm, searchTerm}}  />
     )
 }
 
