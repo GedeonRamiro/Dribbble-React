@@ -18,7 +18,10 @@ const UsersView: React.FC<IProps> = ({users, idState, handleChangeSearchTerm, se
             <div className='my-10 text-center'>
                 <h4 className='mb-2 font-semibold text-gray-600 uppercase'>Pesquisar usuários</h4>
                 <Input type='text' onChange={handleChangeSearchTerm}/>
-                {searchTerm ? <p className='pt-2 text-sm text-center text-gray-600 '>Usuários ({users.length })</p> : <p className='pt-2 text-sm text-center text-gray-600 ' ><br /></p>}
+                {searchTerm || users.length > 0 ? 
+                    <p className='pt-2 text-sm text-center text-gray-600 '> Usuários ({users.length })</p> : 
+                    <p className='pt-2 text-sm text-center text-gray-600 ' > <br /> </p>
+                }
             </div>
             <div className="grid my-20 gap-y-14 gap-x-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {users.map(user => (
