@@ -5,6 +5,7 @@ import { BsEyeFill } from 'react-icons/bs'
 import  Modal from '_common/components/Modal'
 import { RiEditBoxFill } from 'react-icons/ri'
 import { MdDeleteSweep } from 'react-icons/md'
+import ContainerCard from '_common/components/ContainerCard'
 
 
 
@@ -89,7 +90,7 @@ const ProfileView: React.FC<IProps> = ( {
             </div>
 
             {profile.posts &&  (
-                 <div className="grid gap-6 my-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                 <ContainerCard>
                     {profile.posts.map(post => (
                         <div className='my-2' key={post.id}>
                             <Link to={`/post/${post.id}`}>
@@ -129,7 +130,7 @@ const ProfileView: React.FC<IProps> = ( {
                            )}
                     </div>
                     ))}
-            </div>
+                </ContainerCard>
             )} 
               
             {profile.posts && profile.posts.length < 1 && (
