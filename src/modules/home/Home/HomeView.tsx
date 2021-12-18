@@ -2,19 +2,30 @@ import { IPosts } from './Home'
 import ContainerCard from "_common/components/ContainerCard"
 import { FaHeart } from 'react-icons/fa'
 import { BsEyeFill } from 'react-icons/bs'
-
 import { Link } from 'react-router-dom'
 import { IAuth, useGlobalState } from 'context/GlobalContext'
+import Input from '_common/components/Input'
 
 interface IProps {
     posts: IPosts[]
+    searchTerm: string
+    handleChangeSearchTerm: React.ChangeEventHandler<HTMLInputElement>
 } 
 
-const HomeView: React.FC<IProps> = ( { posts } ) => {
+const HomeView: React.FC<IProps> = ( { posts, handleChangeSearchTerm, searchTerm } ) => {
 
     const { auth: { user: { id: idState }} } = useGlobalState() as {auth: IAuth}
 
     return (
+        <>
+          <div className='my-10 text-center'>
+                <h4 className='mb-2 font-semibold text-gray-600 uppercase'>Pesquisar Posts</h4>
+                <Input type='text' onChange={handleChangeSearchTerm}/>
+                {searchTerm || posts.length > 0 ? 
+                    <p className='pt-2 text-sm text-center text-gray-600 '> Posts ({posts.length })</p> : 
+                    <p className='pt-2 text-sm text-center text-gray-600 ' > <br /> </p>
+                }
+            </div>
             <ContainerCard>
                  {posts.map((post) => (
                     <div className='my-2' key={post.id}>
@@ -45,6 +56,7 @@ const HomeView: React.FC<IProps> = ( { posts } ) => {
                     </div>
             ))}
             </ContainerCard>
+        </>
     )
 }
 
