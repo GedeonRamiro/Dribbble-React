@@ -12,7 +12,7 @@ interface IProps {
 
 
 const UsersView: React.FC<IProps> = ({users, idState, handleChangeSearchTerm, searchTerm}) => {
-
+    
 
     return (
         <>
