@@ -43,7 +43,7 @@ const Home = () => {
         )
 
       setPosts(result)
-      
+
        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[filterPosts])
 
