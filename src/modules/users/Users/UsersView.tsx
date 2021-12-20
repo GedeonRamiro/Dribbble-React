@@ -13,6 +13,7 @@ interface IProps {
 
 const UsersView: React.FC<IProps> = ({users, idState, handleChangeSearchTerm, searchTerm}) => {
 
+
     return (
         <>
             <div className='my-10 text-center'>
@@ -28,7 +29,7 @@ const UsersView: React.FC<IProps> = ({users, idState, handleChangeSearchTerm, se
                     <div key={user.id} className="relative flex flex-col items-center justify-center pt-20 bg-gray-100 rounded-md shadow-md hover:shadow-lg">
                         <div className="absolute z-10 p-2 transition bg-gray-400 rounded-full shadow-lg w-28 h-28 -top-8 hover:shadow-xl">
                             <div className="w-full h-full overflow-auto bg-black rounded-full">
-                                <img src={`https://robohash.org/${user.name}`} alt={user.name} className='bg-pink-400' />
+                                <img src={`https://robohash.org/${user.name}/`} alt={user.name} className='bg-pink-400' />
                             </div>
                         </div>
                         <div className='py-4 tracking-wider text-center'>

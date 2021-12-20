@@ -21,7 +21,6 @@ const Home = () => {
     const [filterPosts, setFilterPosts] = useState([])
 
     const debouncedSearchTerm = useDebounce(searchTerm)
-    console.log(filterPosts)
 
     const handleChangeSearchTerm = (event: React.ChangeEvent<HTMLInputElement>) => {
       setSerachTerm(event.target.value);
@@ -44,6 +43,7 @@ const Home = () => {
         )
 
       setPosts(result)
+       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[filterPosts])
 
 
